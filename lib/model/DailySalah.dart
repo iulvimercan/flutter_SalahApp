@@ -1,3 +1,4 @@
+
 import 'package:salah_app/data/salah_times/istanbul_istanbul.dart';
 
 class DailySalah {
@@ -15,12 +16,12 @@ class DailySalah {
   late DateTime fajr, sunrise, dhuhr, asr, maghrib, isha;
 
   List<Map<String, dynamic>> get salahTimes => [
-        {"name": "Fajr", "time": fajr},
-        {"name": "Sunrise", "time": sunrise},
-        {"name": "Dhuhr", "time": dhuhr},
-        {"name": "Asr", "time": asr},
-        {"name": "Maghrib", "time": maghrib},
-        {"name": "Isha", "time": isha},
+        {"name": "fajr", "time": fajr},
+        {"name": "sunrise", "time": sunrise},
+        {"name": "dhuhr", "time": dhuhr},
+        {"name": "asr", "time": asr},
+        {"name": "maghrib", "time": maghrib},
+        {"name": "isha", "time": isha},
       ];
 
   Map<String, String> get remainingTime {

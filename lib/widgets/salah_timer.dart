@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../data/model/DailySalah.dart';
+import '../model/DailySalah.dart';
+import '../services/LanguageService.dart';
 
 class SalahTimer extends StatefulWidget {
   const SalahTimer({required DailySalah dailySalah, super.key})
@@ -15,18 +17,18 @@ class SalahTimer extends StatefulWidget {
 }
 
 class _SalahTimerState extends State<SalahTimer> {
-  Map remainingTime = {};
+  Map remainingSalah = {};
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    remainingTime = widget._dailySalah.remainingTime;
+    remainingSalah = widget._dailySalah.remainingTime;
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
         setState(() {
-          remainingTime = widget._dailySalah.remainingTime;
+          remainingSalah = widget._dailySalah.remainingTime;
         });
       },
     );
@@ -40,6 +42,10 @@ class _SalahTimerState extends State<SalahTimer> {
 
   @override
   Widget build(BuildContext context) {
+    var lang = Provider.of<LanguageService>(context);
+    var salahName = remainingSalah['name'];
+    var remainingTime = remainingSalah['remaining'];
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -51,14 +57,14 @@ class _SalahTimerState extends State<SalahTimer> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            remainingTime['name'],
+            lang.get(salahName),
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            remainingTime['remaining'],
+            remainingTime,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

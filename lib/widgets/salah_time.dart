@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../services/LanguageService.dart';
 
 class SalahTime extends StatelessWidget {
   const SalahTime({required this.salahName, required this.salahTime, super.key});
@@ -14,6 +17,11 @@ class SalahTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = Provider.of<LanguageService>(context);
+    var locale = Localizations.localeOf(context).languageCode;
+    print('+++ Device locale = $locale');
+    lang.locale = locale;
+
     return SizedBox(
       width: 120,
       height: 70,
@@ -28,7 +36,7 @@ class SalahTime extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(salahName),
+              Text(lang.get(salahName)),
               Text(formattedSalahTime),
             ],
           ),

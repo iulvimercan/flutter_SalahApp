@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:salah_app/data/model/DailySalah.dart';
+import 'package:salah_app/model/DailySalah.dart';
 import 'package:salah_app/widgets/salah_time.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
 
