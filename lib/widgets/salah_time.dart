@@ -18,9 +18,6 @@ class SalahTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lang = Provider.of<LanguageService>(context);
-    var locale = Localizations.localeOf(context).languageCode;
-    print('+++ Device locale = $locale');
-    lang.locale = locale;
 
     return SizedBox(
       width: 120,

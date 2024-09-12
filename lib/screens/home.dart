@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:salah_app/model/DailySalah.dart';
 import 'package:salah_app/widgets/salah_time.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
@@ -11,13 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late DailySalah _dailySalah;
-
-  @override
-  void initState() {
-    super.initState();
-    _dailySalah = DailySalah.current();
-  }
+  late final DailySalah _dailySalah = context.read<DailySalah>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +21,16 @@ class _HomeState extends State<Home> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                _dailySalah = DailySalah.current();
-              });
-            },
-            icon: const Icon(Icons.refresh),
-            color: Colors.blue,
-            iconSize: 40,
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     setState(_dailySalah.updateObjectToDate);
+          //   },
+          //   icon: const Icon(Icons.refresh),
+          //   color: Colors.blue,
+          //   iconSize: 40,
+          // ),
           const SizedBox(height: 20),
-          SalahTimer(dailySalah: _dailySalah),
+          const SalahTimer(),
           const SizedBox(height: 20),
           Wrap(
             alignment: WrapAlignment.center,
@@ -49,7 +42,7 @@ class _HomeState extends State<Home> {
                 salahTime: salahTime['time'],
               );
             }).toList(),
-          )
+          ),
         ],
       ),
     );

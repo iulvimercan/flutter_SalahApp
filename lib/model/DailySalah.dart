@@ -1,13 +1,14 @@
 
+import 'package:flutter/material.dart';
 import 'package:salah_app/data/salah_times/istanbul_istanbul.dart';
 
-class DailySalah {
+class DailySalah with ChangeNotifier {
   DailySalah.fromJson(dayObj) {
     _setAllFieldsWithJson(dayObj);
   }
 
   DailySalah.current() {
-    _updateObjectToDate();
+    updateObjectToDate();
   }
 
   late DateTime date;
@@ -36,13 +37,13 @@ class DailySalah {
 
   Map<String, dynamic> get nextSalah {
     if (!_isDateUpToDate()) {
-      _updateObjectToDate();
+      updateObjectToDate();
     }
     return salahTimes
         .firstWhere((salah) => salah['time'].isAfter(DateTime.now()));
   }
 
-  void _updateObjectToDate() {
+  void updateObjectToDate() {
     var now = DateTime.now();
     var todayDate = now.toString().split(' ')[0];
     var tdyObj = istIst[todayDate];
@@ -54,6 +55,7 @@ class DailySalah {
       var tmrDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
       _setAllFieldsWithJson(istIst[tmrDate]);
     }
+    notifyListeners();
   }
 
   void _setAllFieldsWithJson(dayObj) {

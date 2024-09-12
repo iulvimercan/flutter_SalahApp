@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:salah_app/screens/home.dart';
 import 'package:salah_app/services/LanguageService.dart';
 
+import 'model/DailySalah.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +19,9 @@ class SalahApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (c) => LanguageService()),
+        ChangeNotifierProvider(create: (c) => DailySalah.current()),
       ],
       child: MaterialApp(
-
         home: Scaffold(
           appBar: AppBar(
             title: Consumer<LanguageService>(
@@ -27,12 +29,6 @@ class SalahApp extends StatelessWidget {
                 return Text(lang.get('app_title'));
               },
             ),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.language),
-              ),
-            ],
           ),
           body: const Home(),
         ),

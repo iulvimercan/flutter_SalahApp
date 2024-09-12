@@ -7,28 +7,26 @@ import '../model/DailySalah.dart';
 import '../services/LanguageService.dart';
 
 class SalahTimer extends StatefulWidget {
-  const SalahTimer({required DailySalah dailySalah, super.key})
-      : _dailySalah = dailySalah;
-
-  final DailySalah _dailySalah;
+  const SalahTimer({super.key});
 
   @override
   State<SalahTimer> createState() => _SalahTimerState();
 }
 
 class _SalahTimerState extends State<SalahTimer> {
+  late final DailySalah _dailySalah = DailySalah.current();
   Map remainingSalah = {};
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    remainingSalah = widget._dailySalah.remainingTime;
+    remainingSalah = _dailySalah.remainingTime;
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
         setState(() {
-          remainingSalah = widget._dailySalah.remainingTime;
+          remainingSalah = _dailySalah.remainingTime;
         });
       },
     );
