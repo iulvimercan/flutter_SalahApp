@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LanguageService with ChangeNotifier {
   LanguageService({locale}) {
     print('----- Constructor attempted to change locale to ${locale??'null'}');
-    _locale = locale;
+    _locale = locale ?? 'en';
   }
 
   static final Map<String, Map<String, String>> _dictionary = {

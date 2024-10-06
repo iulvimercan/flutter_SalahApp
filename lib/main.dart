@@ -56,38 +56,6 @@ class HomeScreen extends StatelessWidget {
               return Text(lang.get('app_title'));
             },
           ),
-          actions: [
-            PopupMenuButton(
-              icon: const Icon(
-                Icons.language,
-                color: Colors.black54,
-              ),
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                    child: ListTile(
-                      title: const Text('English', textAlign: TextAlign.center),
-                      onTap: () {
-                        Provider.of<LanguageService>(context, listen: false)
-                            .locale = 'en';
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                  PopupMenuItem(
-                    child: ListTile(
-                      title: const Text('Türkçe', textAlign: TextAlign.center),
-                      onTap: () {
-                        Provider.of<LanguageService>(context, listen: false)
-                            .locale = 'tr';
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                ];
-              },
-            ),
-          ],
         ),
         body: const Home(),
       ),
