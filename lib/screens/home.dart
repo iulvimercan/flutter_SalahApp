@@ -12,10 +12,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late final DailySalah _dailySalah = context.read<DailySalah>();
 
   @override
   Widget build(BuildContext context) {
+    DailySalah dailySalah = Provider.of<DailySalah>(context);
+
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
             alignment: WrapAlignment.center,
             spacing: 15,
             runSpacing: 15,
-            children: _dailySalah.salahTimes.map((salahTime) {
+            children: dailySalah.salahTimes.map((salahTime) {
               return SalahTime(
                 salahName: salahTime['name'],
                 salahTime: salahTime['time'],

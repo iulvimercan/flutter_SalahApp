@@ -14,22 +14,14 @@ class SalahTimer extends StatefulWidget {
 }
 
 class _SalahTimerState extends State<SalahTimer> {
-  late final DailySalah _dailySalah = DailySalah.current();
-  Map remainingSalah = {};
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    remainingSalah = _dailySalah.remainingTime;
-    _timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (timer) {
-        setState(() {
-          remainingSalah = _dailySalah.remainingTime;
-        });
-      },
-    );
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {});
+    });
   }
 
   @override
@@ -41,8 +33,9 @@ class _SalahTimerState extends State<SalahTimer> {
   @override
   Widget build(BuildContext context) {
     var lang = Provider.of<LanguageService>(context);
-    var salahName = remainingSalah['name'];
-    var remainingTime = remainingSalah['remaining'];
+    var remainingSalah = Provider.of<DailySalah>(context).remainingTime;
+    var salahName = remainingSalah['name']!;
+    var remainingTime = remainingSalah['remaining']!;
 
     return Container(
       decoration: BoxDecoration(

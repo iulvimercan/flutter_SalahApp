@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:salah_app/data/salah_times/istanbul_istanbul.dart';
+import 'package:salah_app/data/salah_times/istanbul_basaksehir.dart';
+import 'package:salah_app/data/salah_times/istanbul_kucukcekmece.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DailySalah with ChangeNotifier {
   DailySalah.fromJson(dayObj) {
@@ -8,7 +11,28 @@ class DailySalah with ChangeNotifier {
   }
 
   DailySalah.current() {
+    _loadRegionSetting();
     updateObjectToDate();
+  }
+
+  String _region = 'İstanbul';
+  String get region => _region;
+  set region(String region) {
+    _region = region;
+    _saveRegionSetting(region);
+    updateObjectToDate();
+  }
+  Map get regionSalahTimes {
+    switch (region) {
+      case 'İstanbul':
+        return istIstanbul;
+      case 'Başakşehir':
+        return istBasaksehir;
+      case 'Küçükçekmece':
+        return istKucukcekmece;
+      default:
+        return istIstanbul;
+    }
   }
 
   late DateTime date;
@@ -46,14 +70,14 @@ class DailySalah with ChangeNotifier {
   void updateObjectToDate() {
     var now = DateTime.now();
     var todayDate = now.toString().split(' ')[0];
-    var tdyObj = istIst[todayDate];
+    var tdyObj = regionSalahTimes[todayDate];
     var tdyIsha = DateTime.parse('$todayDate ${tdyObj['data']['isha']}');
     // if isha called, we need to get tomorrow's salah times
     if (now.isBefore(tdyIsha)) {
       _setAllFieldsWithJson(tdyObj);
     } else {
       var tmrDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
-      _setAllFieldsWithJson(istIst[tmrDate]);
+      _setAllFieldsWithJson(regionSalahTimes[tmrDate]);
     }
     notifyListeners();
   }
@@ -77,6 +101,17 @@ class DailySalah with ChangeNotifier {
     DateTime now = DateTime.now();
     return now.isBefore(isha);
   }
+
+  void _loadRegionSetting() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    region = preferences.getString('region') ?? region;
+  }
+
+  void _saveRegionSetting(region) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('region', region);
+  }
+
 
   // static String extractTime(DateTime time) {
   //   return "${time.hour}:${time.minute}";

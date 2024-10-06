@@ -56,6 +56,59 @@ class HomeScreen extends StatelessWidget {
               return Text(lang.get('app_title'));
             },
           ),
+          actions: [
+            PopupMenuButton(
+              offset: const Offset(-10, 32),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black54),
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.location_on, color: Colors.black54, size: 16,),
+                      Consumer<DailySalah>(
+                        builder: (context, dailySalah, child) {
+                          return Text(
+                            dailySalah.region,
+                            style: TextStyle(fontSize: 16, color: Colors.black54),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    child: Text('İstanbul'),
+                    onTap: () {
+                      Provider.of<DailySalah>(context, listen: false).region =
+                          'İstanbul';
+                    },
+                  ),
+                  PopupMenuItem(
+                    child: Text('Başakşehir'),
+                    onTap: () {
+                      Provider.of<DailySalah>(context, listen: false).region =
+                          'Başakşehir';
+                    },
+                  ),
+                  PopupMenuItem(
+                    child: Text('Küçükçekmece'),
+                    onTap: () {
+                      Provider.of<DailySalah>(context, listen: false).region =
+                          'Küçükçekmece';
+                    },
+                  ),
+                ];
+              },
+            ),
+            const SizedBox(width: 12),
+          ],
         ),
         body: const Home(),
       ),

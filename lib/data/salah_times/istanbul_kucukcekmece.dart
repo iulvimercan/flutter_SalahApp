@@ -1,4 +1,4 @@
-Map istIstanbul = {
+Map istKucukcekmece = {
   '2024-10-01': {
     'date': {
       'date': '2024-10-01',
@@ -6,12 +6,12 @@ Map istIstanbul = {
       'hijri': '28 Rebiulevvel 1446'
     },
     'data': {
-      'fajr': '05:29',
-      'sunrise': '06:54',
-      'dhuhr': '12:59',
-      'asr': '16:16',
-      'maghrib': '18:54',
-      'isha': '20:13'
+      'fajr': '05:30',
+      'sunrise': '06:55',
+      'dhuhr': '13:00',
+      'asr': '16:17',
+      'maghrib': '18:55',
+      'isha': '20:14'
     }
   },
   '2024-10-02': {
@@ -21,12 +21,12 @@ Map istIstanbul = {
       'hijri': '29 Rebiulevvel 1446'
     },
     'data': {
-      'fajr': '05:30',
-      'sunrise': '06:55',
-      'dhuhr': '12:58',
+      'fajr': '05:31',
+      'sunrise': '06:56',
+      'dhuhr': '12:59',
       'asr': '16:15',
-      'maghrib': '18:52',
-      'isha': '20:11'
+      'maghrib': '18:53',
+      'isha': '20:12'
     }
   },
   '2024-10-03': {
@@ -37,11 +37,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:32',
-      'sunrise': '06:56',
-      'dhuhr': '12:58',
-      'asr': '16:13',
-      'maghrib': '18:50',
-      'isha': '20:09'
+      'sunrise': '06:57',
+      'dhuhr': '12:59',
+      'asr': '16:14',
+      'maghrib': '18:51',
+      'isha': '20:10'
     }
   },
   '2024-10-04': {
@@ -52,10 +52,10 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:33',
-      'sunrise': '06:57',
-      'dhuhr': '12:58',
-      'asr': '16:12',
-      'maghrib': '18:49',
+      'sunrise': '06:58',
+      'dhuhr': '12:59',
+      'asr': '16:13',
+      'maghrib': '18:50',
       'isha': '20:08'
     }
   },
@@ -67,11 +67,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:34',
-      'sunrise': '06:58',
+      'sunrise': '06:59',
       'dhuhr': '12:58',
-      'asr': '16:11',
-      'maghrib': '18:47',
-      'isha': '20:06'
+      'asr': '16:12',
+      'maghrib': '18:48',
+      'isha': '20:07'
     }
   },
   '2024-10-06': {
@@ -81,12 +81,12 @@ Map istIstanbul = {
       'hijri': '3 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:35',
-      'sunrise': '06:59',
-      'dhuhr': '12:57',
-      'asr': '16:10',
-      'maghrib': '18:45',
-      'isha': '20:04'
+      'fajr': '05:36',
+      'sunrise': '07:00',
+      'dhuhr': '12:58',
+      'asr': '16:11',
+      'maghrib': '18:46',
+      'isha': '20:05'
     }
   },
   '2024-10-07': {
@@ -96,11 +96,11 @@ Map istIstanbul = {
       'hijri': '4 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:36',
-      'sunrise': '07:00',
-      'dhuhr': '12:57',
+      'fajr': '05:37',
+      'sunrise': '07:01',
+      'dhuhr': '12:58',
       'asr': '16:09',
-      'maghrib': '18:44',
+      'maghrib': '18:45',
       'isha': '20:03'
     }
   },
@@ -111,12 +111,12 @@ Map istIstanbul = {
       'hijri': '5 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:37',
-      'sunrise': '07:01',
+      'fajr': '05:38',
+      'sunrise': '07:02',
       'dhuhr': '12:57',
-      'asr': '16:07',
-      'maghrib': '18:42',
-      'isha': '20:01'
+      'asr': '16:08',
+      'maghrib': '18:43',
+      'isha': '20:02'
     }
   },
   '2024-10-09': {
@@ -126,12 +126,12 @@ Map istIstanbul = {
       'hijri': '6 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:38',
-      'sunrise': '07:02',
-      'dhuhr': '12:56',
-      'asr': '16:06',
+      'fajr': '05:39',
+      'sunrise': '07:03',
+      'dhuhr': '12:57',
+      'asr': '16:07',
       'maghrib': '18:41',
-      'isha': '19:59'
+      'isha': '20:00'
     }
   },
   '2024-10-10': {
@@ -141,12 +141,12 @@ Map istIstanbul = {
       'hijri': '7 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:39',
-      'sunrise': '07:03',
-      'dhuhr': '12:56',
-      'asr': '16:05',
-      'maghrib': '18:39',
-      'isha': '19:58'
+      'fajr': '05:40',
+      'sunrise': '07:04',
+      'dhuhr': '12:57',
+      'asr': '16:06',
+      'maghrib': '18:40',
+      'isha': '19:59'
     }
   },
   '2024-10-11': {
@@ -156,12 +156,12 @@ Map istIstanbul = {
       'hijri': '8 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:40',
-      'sunrise': '07:04',
-      'dhuhr': '12:56',
+      'fajr': '05:41',
+      'sunrise': '07:05',
+      'dhuhr': '12:57',
       'asr': '16:04',
-      'maghrib': '18:37',
-      'isha': '19:56'
+      'maghrib': '18:38',
+      'isha': '19:57'
     }
   },
   '2024-10-12': {
@@ -171,12 +171,12 @@ Map istIstanbul = {
       'hijri': '9 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:41',
-      'sunrise': '07:05',
+      'fajr': '05:42',
+      'sunrise': '07:06',
       'dhuhr': '12:56',
-      'asr': '16:02',
-      'maghrib': '18:36',
-      'isha': '19:55'
+      'asr': '16:03',
+      'maghrib': '18:37',
+      'isha': '19:56'
     }
   },
   '2024-10-13': {
@@ -186,12 +186,12 @@ Map istIstanbul = {
       'hijri': '10 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:42',
+      'fajr': '05:43',
       'sunrise': '07:07',
-      'dhuhr': '12:55',
-      'asr': '16:01',
-      'maghrib': '18:34',
-      'isha': '19:53'
+      'dhuhr': '12:56',
+      'asr': '16:02',
+      'maghrib': '18:35',
+      'isha': '19:54'
     }
   },
   '2024-10-14': {
@@ -201,10 +201,10 @@ Map istIstanbul = {
       'hijri': '11 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:43',
+      'fajr': '05:44',
       'sunrise': '07:08',
-      'dhuhr': '12:55',
-      'asr': '16:00',
+      'dhuhr': '12:56',
+      'asr': '16:01',
       'maghrib': '18:33',
       'isha': '19:52'
     }
@@ -216,12 +216,12 @@ Map istIstanbul = {
       'hijri': '12 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:44',
+      'fajr': '05:45',
       'sunrise': '07:09',
-      'dhuhr': '12:55',
-      'asr': '15:59',
-      'maghrib': '18:31',
-      'isha': '19:50'
+      'dhuhr': '12:56',
+      'asr': '16:00',
+      'maghrib': '18:32',
+      'isha': '19:51'
     }
   },
   '2024-10-16': {
@@ -231,10 +231,10 @@ Map istIstanbul = {
       'hijri': '13 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:45',
-      'sunrise': '07:10',
+      'fajr': '05:46',
+      'sunrise': '07:11',
       'dhuhr': '12:55',
-      'asr': '15:58',
+      'asr': '15:59',
       'maghrib': '18:30',
       'isha': '19:49'
     }
@@ -246,12 +246,12 @@ Map istIstanbul = {
       'hijri': '14 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:46',
-      'sunrise': '07:11',
-      'dhuhr': '12:54',
+      'fajr': '05:47',
+      'sunrise': '07:12',
+      'dhuhr': '12:55',
       'asr': '15:57',
-      'maghrib': '18:28',
-      'isha': '19:47'
+      'maghrib': '18:29',
+      'isha': '19:48'
     }
   },
   '2024-10-18': {
@@ -261,12 +261,12 @@ Map istIstanbul = {
       'hijri': '15 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:47',
-      'sunrise': '07:12',
-      'dhuhr': '12:54',
-      'asr': '15:55',
+      'fajr': '05:48',
+      'sunrise': '07:13',
+      'dhuhr': '12:55',
+      'asr': '15:56',
       'maghrib': '18:27',
-      'isha': '19:46'
+      'isha': '19:47'
     }
   },
   '2024-10-19': {
@@ -276,12 +276,12 @@ Map istIstanbul = {
       'hijri': '16 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:48',
-      'sunrise': '07:13',
-      'dhuhr': '12:54',
-      'asr': '15:54',
-      'maghrib': '18:25',
-      'isha': '19:44'
+      'fajr': '05:49',
+      'sunrise': '07:14',
+      'dhuhr': '12:55',
+      'asr': '15:55',
+      'maghrib': '18:26',
+      'isha': '19:45'
     }
   },
   '2024-10-20': {
@@ -292,11 +292,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:50',
-      'sunrise': '07:14',
-      'dhuhr': '12:54',
-      'asr': '15:53',
+      'sunrise': '07:15',
+      'dhuhr': '12:55',
+      'asr': '15:54',
       'maghrib': '18:24',
-      'isha': '19:43'
+      'isha': '19:44'
     }
   },
   '2024-10-21': {
@@ -307,10 +307,10 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:51',
-      'sunrise': '07:15',
+      'sunrise': '07:16',
       'dhuhr': '12:54',
-      'asr': '15:52',
-      'maghrib': '18:22',
+      'asr': '15:53',
+      'maghrib': '18:23',
       'isha': '19:42'
     }
   },
@@ -322,11 +322,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:52',
-      'sunrise': '07:16',
+      'sunrise': '07:17',
       'dhuhr': '12:54',
-      'asr': '15:51',
+      'asr': '15:52',
       'maghrib': '18:21',
-      'isha': '19:40'
+      'isha': '19:41'
     }
   },
   '2024-10-23': {
@@ -338,10 +338,10 @@ Map istIstanbul = {
     'data': {
       'fajr': '05:53',
       'sunrise': '07:18',
-      'dhuhr': '12:53',
-      'asr': '15:50',
-      'maghrib': '18:19',
-      'isha': '19:39'
+      'dhuhr': '12:54',
+      'asr': '15:51',
+      'maghrib': '18:20',
+      'isha': '19:40'
     }
   },
   '2024-10-24': {
@@ -352,10 +352,10 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '05:54',
-      'sunrise': '07:19',
-      'dhuhr': '12:53',
+      'sunrise': '07:20',
+      'dhuhr': '12:54',
       'asr': '15:49',
-      'maghrib': '18:18',
+      'maghrib': '18:19',
       'isha': '19:38'
     }
   },
@@ -366,12 +366,12 @@ Map istIstanbul = {
       'hijri': '22 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:55',
-      'sunrise': '07:20',
-      'dhuhr': '12:53',
+      'fajr': '05:56',
+      'sunrise': '07:21',
+      'dhuhr': '12:54',
       'asr': '15:48',
-      'maghrib': '18:16',
-      'isha': '19:36'
+      'maghrib': '18:17',
+      'isha': '19:37'
     }
   },
   '2024-10-26': {
@@ -381,12 +381,12 @@ Map istIstanbul = {
       'hijri': '23 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:56',
-      'sunrise': '07:21',
-      'dhuhr': '12:53',
-      'asr': '15:46',
-      'maghrib': '18:15',
-      'isha': '19:35'
+      'fajr': '05:57',
+      'sunrise': '07:22',
+      'dhuhr': '12:54',
+      'asr': '15:47',
+      'maghrib': '18:16',
+      'isha': '19:36'
     }
   },
   '2024-10-27': {
@@ -396,12 +396,12 @@ Map istIstanbul = {
       'hijri': '24 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:57',
-      'sunrise': '07:22',
-      'dhuhr': '12:53',
-      'asr': '15:45',
-      'maghrib': '18:14',
-      'isha': '19:34'
+      'fajr': '05:58',
+      'sunrise': '07:23',
+      'dhuhr': '12:54',
+      'asr': '15:46',
+      'maghrib': '18:15',
+      'isha': '19:35'
     }
   },
   '2024-10-28': {
@@ -411,11 +411,11 @@ Map istIstanbul = {
       'hijri': '25 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:58',
-      'sunrise': '07:23',
-      'dhuhr': '12:53',
-      'asr': '15:44',
-      'maghrib': '18:12',
+      'fajr': '05:59',
+      'sunrise': '07:24',
+      'dhuhr': '12:54',
+      'asr': '15:45',
+      'maghrib': '18:13',
       'isha': '19:33'
     }
   },
@@ -426,12 +426,12 @@ Map istIstanbul = {
       'hijri': '26 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '05:59',
+      'fajr': '06:00',
       'sunrise': '07:25',
-      'dhuhr': '12:53',
-      'asr': '15:43',
-      'maghrib': '18:11',
-      'isha': '19:31'
+      'dhuhr': '12:54',
+      'asr': '15:44',
+      'maghrib': '18:12',
+      'isha': '19:32'
     }
   },
   '2024-10-30': {
@@ -441,12 +441,12 @@ Map istIstanbul = {
       'hijri': '27 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '06:00',
+      'fajr': '06:01',
       'sunrise': '07:26',
-      'dhuhr': '12:53',
-      'asr': '15:42',
-      'maghrib': '18:10',
-      'isha': '19:30'
+      'dhuhr': '12:54',
+      'asr': '15:43',
+      'maghrib': '18:11',
+      'isha': '19:31'
     }
   },
   '2024-10-31': {
@@ -456,12 +456,12 @@ Map istIstanbul = {
       'hijri': '28 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '06:01',
-      'sunrise': '07:27',
+      'fajr': '06:02',
+      'sunrise': '07:28',
       'dhuhr': '12:53',
-      'asr': '15:41',
+      'asr': '15:42',
       'maghrib': '18:09',
-      'isha': '19:29'
+      'isha': '19:30'
     }
   },
   '2024-11-01': {
@@ -471,12 +471,12 @@ Map istIstanbul = {
       'hijri': '29 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '06:02',
-      'sunrise': '07:28',
+      'fajr': '06:03',
+      'sunrise': '07:29',
       'dhuhr': '12:53',
-      'asr': '15:40',
-      'maghrib': '18:07',
-      'isha': '19:28'
+      'asr': '15:41',
+      'maghrib': '18:08',
+      'isha': '19:29'
     }
   },
   '2024-11-02': {
@@ -486,12 +486,12 @@ Map istIstanbul = {
       'hijri': '30 Rebiulahir 1446'
     },
     'data': {
-      'fajr': '06:03',
-      'sunrise': '07:29',
+      'fajr': '06:04',
+      'sunrise': '07:30',
       'dhuhr': '12:53',
-      'asr': '15:39',
-      'maghrib': '18:06',
-      'isha': '19:27'
+      'asr': '15:40',
+      'maghrib': '18:07',
+      'isha': '19:28'
     }
   },
   '2024-11-03': {
@@ -501,12 +501,12 @@ Map istIstanbul = {
       'hijri': '1 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:04',
-      'sunrise': '07:30',
+      'fajr': '06:05',
+      'sunrise': '07:31',
       'dhuhr': '12:53',
-      'asr': '15:38',
-      'maghrib': '18:05',
-      'isha': '19:26'
+      'asr': '15:39',
+      'maghrib': '18:06',
+      'isha': '19:27'
     }
   },
   '2024-11-04': {
@@ -516,12 +516,12 @@ Map istIstanbul = {
       'hijri': '2 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:05',
+      'fajr': '06:06',
       'sunrise': '07:32',
       'dhuhr': '12:53',
       'asr': '15:38',
-      'maghrib': '18:04',
-      'isha': '19:25'
+      'maghrib': '18:05',
+      'isha': '19:26'
     }
   },
   '2024-11-05': {
@@ -531,12 +531,12 @@ Map istIstanbul = {
       'hijri': '3 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:06',
-      'sunrise': '07:33',
+      'fajr': '06:07',
+      'sunrise': '07:34',
       'dhuhr': '12:53',
       'asr': '15:37',
       'maghrib': '18:03',
-      'isha': '19:24'
+      'isha': '19:25'
     }
   },
   '2024-11-06': {
@@ -546,12 +546,12 @@ Map istIstanbul = {
       'hijri': '4 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:07',
-      'sunrise': '07:34',
+      'fajr': '06:08',
+      'sunrise': '07:35',
       'dhuhr': '12:53',
-      'asr': '15:36',
+      'asr': '15:37',
       'maghrib': '18:02',
-      'isha': '19:23'
+      'isha': '19:24'
     }
   },
   '2024-11-07': {
@@ -561,12 +561,12 @@ Map istIstanbul = {
       'hijri': '5 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:08',
-      'sunrise': '07:35',
-      'dhuhr': '12:53',
-      'asr': '15:35',
-      'maghrib': '18:00',
-      'isha': '19:22'
+      'fajr': '06:09',
+      'sunrise': '07:36',
+      'dhuhr': '12:54',
+      'asr': '15:36',
+      'maghrib': '18:01',
+      'isha': '19:23'
     }
   },
   '2024-11-08': {
@@ -576,12 +576,12 @@ Map istIstanbul = {
       'hijri': '6 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:09',
-      'sunrise': '07:36',
-      'dhuhr': '12:53',
-      'asr': '15:34',
-      'maghrib': '17:59',
-      'isha': '19:21'
+      'fajr': '06:10',
+      'sunrise': '07:37',
+      'dhuhr': '12:54',
+      'asr': '15:35',
+      'maghrib': '18:00',
+      'isha': '19:22'
     }
   },
   '2024-11-09': {
@@ -591,12 +591,12 @@ Map istIstanbul = {
       'hijri': '7 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:10',
+      'fajr': '06:11',
       'sunrise': '07:38',
-      'dhuhr': '12:53',
-      'asr': '15:33',
-      'maghrib': '17:58',
-      'isha': '19:20'
+      'dhuhr': '12:54',
+      'asr': '15:34',
+      'maghrib': '17:59',
+      'isha': '19:21'
     }
   },
   '2024-11-10': {
@@ -606,12 +606,12 @@ Map istIstanbul = {
       'hijri': '8 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:11',
+      'fajr': '06:12',
       'sunrise': '07:39',
-      'dhuhr': '12:53',
-      'asr': '15:32',
-      'maghrib': '17:57',
-      'isha': '19:19'
+      'dhuhr': '12:54',
+      'asr': '15:33',
+      'maghrib': '17:58',
+      'isha': '19:20'
     }
   },
   '2024-11-11': {
@@ -621,11 +621,11 @@ Map istIstanbul = {
       'hijri': '9 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:12',
-      'sunrise': '07:40',
-      'dhuhr': '12:53',
+      'fajr': '06:13',
+      'sunrise': '07:41',
+      'dhuhr': '12:54',
       'asr': '15:32',
-      'maghrib': '17:56',
+      'maghrib': '17:57',
       'isha': '19:19'
     }
   },
@@ -636,12 +636,12 @@ Map istIstanbul = {
       'hijri': '10 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:13',
-      'sunrise': '07:41',
-      'dhuhr': '12:53',
-      'asr': '15:31',
-      'maghrib': '17:55',
-      'isha': '19:18'
+      'fajr': '06:14',
+      'sunrise': '07:42',
+      'dhuhr': '12:54',
+      'asr': '15:32',
+      'maghrib': '17:56',
+      'isha': '19:19'
     }
   },
   '2024-11-13': {
@@ -651,12 +651,12 @@ Map istIstanbul = {
       'hijri': '11 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:14',
-      'sunrise': '07:42',
-      'dhuhr': '12:53',
-      'asr': '15:30',
-      'maghrib': '17:54',
-      'isha': '19:17'
+      'fajr': '06:15',
+      'sunrise': '07:43',
+      'dhuhr': '12:54',
+      'asr': '15:31',
+      'maghrib': '17:55',
+      'isha': '19:18'
     }
   },
   '2024-11-14': {
@@ -666,12 +666,12 @@ Map istIstanbul = {
       'hijri': '12 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:15',
+      'fajr': '06:16',
       'sunrise': '07:44',
       'dhuhr': '12:54',
-      'asr': '15:29',
+      'asr': '15:30',
       'maghrib': '17:54',
-      'isha': '19:16'
+      'isha': '19:17'
     }
   },
   '2024-11-15': {
@@ -681,11 +681,11 @@ Map istIstanbul = {
       'hijri': '13 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:16',
+      'fajr': '06:17',
       'sunrise': '07:45',
       'dhuhr': '12:54',
-      'asr': '15:29',
-      'maghrib': '17:53',
+      'asr': '15:30',
+      'maghrib': '17:54',
       'isha': '19:16'
     }
   },
@@ -697,11 +697,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:18',
-      'sunrise': '07:46',
-      'dhuhr': '12:54',
-      'asr': '15:28',
-      'maghrib': '17:52',
-      'isha': '19:15'
+      'sunrise': '07:47',
+      'dhuhr': '12:55',
+      'asr': '15:29',
+      'maghrib': '17:53',
+      'isha': '19:16'
     }
   },
   '2024-11-17': {
@@ -712,11 +712,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:19',
-      'sunrise': '07:47',
-      'dhuhr': '12:54',
-      'asr': '15:27',
-      'maghrib': '17:51',
-      'isha': '19:14'
+      'sunrise': '07:48',
+      'dhuhr': '12:55',
+      'asr': '15:28',
+      'maghrib': '17:52',
+      'isha': '19:15'
     }
   },
   '2024-11-18': {
@@ -727,10 +727,10 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:20',
-      'sunrise': '07:48',
-      'dhuhr': '12:54',
-      'asr': '15:27',
-      'maghrib': '17:50',
+      'sunrise': '07:49',
+      'dhuhr': '12:55',
+      'asr': '15:28',
+      'maghrib': '17:51',
       'isha': '19:14'
     }
   },
@@ -742,11 +742,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:21',
-      'sunrise': '07:49',
-      'dhuhr': '12:54',
-      'asr': '15:26',
+      'sunrise': '07:50',
+      'dhuhr': '12:55',
+      'asr': '15:27',
       'maghrib': '17:50',
-      'isha': '19:13'
+      'isha': '19:14'
     }
   },
   '2024-11-20': {
@@ -759,8 +759,8 @@ Map istIstanbul = {
       'fajr': '06:22',
       'sunrise': '07:51',
       'dhuhr': '12:55',
-      'asr': '15:26',
-      'maghrib': '17:49',
+      'asr': '15:27',
+      'maghrib': '17:50',
       'isha': '19:13'
     }
   },
@@ -771,12 +771,12 @@ Map istIstanbul = {
       'hijri': '19 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:22',
+      'fajr': '06:23',
       'sunrise': '07:52',
-      'dhuhr': '12:55',
-      'asr': '15:25',
-      'maghrib': '17:48',
-      'isha': '19:12'
+      'dhuhr': '12:56',
+      'asr': '15:26',
+      'maghrib': '17:49',
+      'isha': '19:13'
     }
   },
   '2024-11-22': {
@@ -786,10 +786,10 @@ Map istIstanbul = {
       'hijri': '20 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:23',
-      'sunrise': '07:53',
-      'dhuhr': '12:55',
-      'asr': '15:25',
+      'fajr': '06:24',
+      'sunrise': '07:54',
+      'dhuhr': '12:56',
+      'asr': '15:26',
       'maghrib': '17:48',
       'isha': '19:12'
     }
@@ -801,12 +801,12 @@ Map istIstanbul = {
       'hijri': '21 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:24',
-      'sunrise': '07:54',
-      'dhuhr': '12:55',
-      'asr': '15:24',
-      'maghrib': '17:47',
-      'isha': '19:11'
+      'fajr': '06:25',
+      'sunrise': '07:55',
+      'dhuhr': '12:56',
+      'asr': '15:25',
+      'maghrib': '17:48',
+      'isha': '19:12'
     }
   },
   '2024-11-24': {
@@ -816,12 +816,12 @@ Map istIstanbul = {
       'hijri': '22 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:25',
-      'sunrise': '07:55',
-      'dhuhr': '12:56',
-      'asr': '15:24',
-      'maghrib': '17:46',
-      'isha': '19:11'
+      'fajr': '06:26',
+      'sunrise': '07:56',
+      'dhuhr': '12:57',
+      'asr': '15:25',
+      'maghrib': '17:47',
+      'isha': '19:12'
     }
   },
   '2024-11-25': {
@@ -831,12 +831,12 @@ Map istIstanbul = {
       'hijri': '23 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:26',
-      'sunrise': '07:56',
-      'dhuhr': '12:56',
+      'fajr': '06:27',
+      'sunrise': '07:57',
+      'dhuhr': '12:57',
       'asr': '15:24',
-      'maghrib': '17:46',
-      'isha': '19:10'
+      'maghrib': '17:47',
+      'isha': '19:11'
     }
   },
   '2024-11-26': {
@@ -846,12 +846,12 @@ Map istIstanbul = {
       'hijri': '24 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:27',
-      'sunrise': '07:57',
-      'dhuhr': '12:56',
-      'asr': '15:23',
-      'maghrib': '17:45',
-      'isha': '19:10'
+      'fajr': '06:28',
+      'sunrise': '07:58',
+      'dhuhr': '12:57',
+      'asr': '15:24',
+      'maghrib': '17:46',
+      'isha': '19:11'
     }
   },
   '2024-11-27': {
@@ -861,12 +861,12 @@ Map istIstanbul = {
       'hijri': '25 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:28',
-      'sunrise': '07:58',
+      'fajr': '06:29',
+      'sunrise': '07:59',
       'dhuhr': '12:57',
-      'asr': '15:23',
-      'maghrib': '17:45',
-      'isha': '19:10'
+      'asr': '15:24',
+      'maghrib': '17:46',
+      'isha': '19:11'
     }
   },
   '2024-11-28': {
@@ -876,9 +876,9 @@ Map istIstanbul = {
       'hijri': '26 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:29',
+      'fajr': '06:30',
       'sunrise': '08:00',
-      'dhuhr': '12:57',
+      'dhuhr': '12:58',
       'asr': '15:23',
       'maghrib': '17:45',
       'isha': '19:10'
@@ -891,12 +891,12 @@ Map istIstanbul = {
       'hijri': '27 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:30',
+      'fajr': '06:31',
       'sunrise': '08:01',
-      'dhuhr': '12:57',
-      'asr': '15:22',
-      'maghrib': '17:44',
-      'isha': '19:09'
+      'dhuhr': '12:58',
+      'asr': '15:23',
+      'maghrib': '17:45',
+      'isha': '19:10'
     }
   },
   '2024-11-30': {
@@ -906,12 +906,12 @@ Map istIstanbul = {
       'hijri': '28 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:31',
+      'fajr': '06:32',
       'sunrise': '08:02',
-      'dhuhr': '12:58',
-      'asr': '15:22',
-      'maghrib': '17:44',
-      'isha': '19:09'
+      'dhuhr': '12:59',
+      'asr': '15:23',
+      'maghrib': '17:45',
+      'isha': '19:10'
     }
   },
   '2024-12-01': {
@@ -921,12 +921,12 @@ Map istIstanbul = {
       'hijri': '29 Cemaziyelevvel 1446'
     },
     'data': {
-      'fajr': '06:32',
+      'fajr': '06:33',
       'sunrise': '08:03',
-      'dhuhr': '12:58',
-      'asr': '15:22',
+      'dhuhr': '12:59',
+      'asr': '15:23',
       'maghrib': '17:44',
-      'isha': '19:09'
+      'isha': '19:10'
     }
   },
   '2024-12-02': {
@@ -936,12 +936,12 @@ Map istIstanbul = {
       'hijri': '1 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:33',
+      'fajr': '06:34',
       'sunrise': '08:04',
       'dhuhr': '12:59',
-      'asr': '15:22',
-      'maghrib': '17:43',
-      'isha': '19:09'
+      'asr': '15:23',
+      'maghrib': '17:44',
+      'isha': '19:10'
     }
   },
   '2024-12-03': {
@@ -953,9 +953,9 @@ Map istIstanbul = {
     'data': {
       'fajr': '06:34',
       'sunrise': '08:05',
-      'dhuhr': '12:59',
-      'asr': '15:22',
-      'maghrib': '17:43',
+      'dhuhr': '13:00',
+      'asr': '15:23',
+      'maghrib': '17:44',
       'isha': '19:09'
     }
   },
@@ -966,11 +966,11 @@ Map istIstanbul = {
       'hijri': '3 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:34',
+      'fajr': '06:35',
       'sunrise': '08:06',
-      'dhuhr': '12:59',
+      'dhuhr': '13:00',
       'asr': '15:22',
-      'maghrib': '17:43',
+      'maghrib': '17:44',
       'isha': '19:09'
     }
   },
@@ -981,11 +981,11 @@ Map istIstanbul = {
       'hijri': '4 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:35',
+      'fajr': '06:36',
       'sunrise': '08:07',
       'dhuhr': '13:00',
       'asr': '15:22',
-      'maghrib': '17:43',
+      'maghrib': '17:44',
       'isha': '19:09'
     }
   },
@@ -996,11 +996,11 @@ Map istIstanbul = {
       'hijri': '5 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:36',
+      'fajr': '06:37',
       'sunrise': '08:08',
-      'dhuhr': '13:00',
+      'dhuhr': '13:01',
       'asr': '15:22',
-      'maghrib': '17:43',
+      'maghrib': '17:44',
       'isha': '19:09'
     }
   },
@@ -1011,8 +1011,8 @@ Map istIstanbul = {
       'hijri': '6 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:37',
-      'sunrise': '08:08',
+      'fajr': '06:38',
+      'sunrise': '08:09',
       'dhuhr': '13:01',
       'asr': '15:22',
       'maghrib': '17:43',
@@ -1026,12 +1026,12 @@ Map istIstanbul = {
       'hijri': '7 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:38',
-      'sunrise': '08:09',
-      'dhuhr': '13:01',
+      'fajr': '06:39',
+      'sunrise': '08:10',
+      'dhuhr': '13:02',
       'asr': '15:22',
       'maghrib': '17:43',
-      'isha': '19:09'
+      'isha': '19:10'
     }
   },
   '2024-12-09': {
@@ -1042,11 +1042,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:39',
-      'sunrise': '08:10',
-      'dhuhr': '13:01',
-      'asr': '15:22',
+      'sunrise': '08:11',
+      'dhuhr': '13:02',
+      'asr': '15:23',
       'maghrib': '17:43',
-      'isha': '19:09'
+      'isha': '19:10'
     }
   },
   '2024-12-10': {
@@ -1056,12 +1056,12 @@ Map istIstanbul = {
       'hijri': '9 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:39',
-      'sunrise': '08:11',
-      'dhuhr': '13:02',
-      'asr': '15:22',
-      'maghrib': '17:43',
-      'isha': '19:09'
+      'fajr': '06:40',
+      'sunrise': '08:12',
+      'dhuhr': '13:03',
+      'asr': '15:23',
+      'maghrib': '17:44',
+      'isha': '19:10'
     }
   },
   '2024-12-11': {
@@ -1071,12 +1071,12 @@ Map istIstanbul = {
       'hijri': '10 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:40',
-      'sunrise': '08:12',
-      'dhuhr': '13:02',
-      'asr': '15:22',
-      'maghrib': '17:43',
-      'isha': '19:09'
+      'fajr': '06:41',
+      'sunrise': '08:13',
+      'dhuhr': '13:03',
+      'asr': '15:23',
+      'maghrib': '17:44',
+      'isha': '19:10'
     }
   },
   '2024-12-12': {
@@ -1086,12 +1086,12 @@ Map istIstanbul = {
       'hijri': '11 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:41',
+      'fajr': '06:42',
       'sunrise': '08:13',
-      'dhuhr': '13:03',
-      'asr': '15:22',
-      'maghrib': '17:43',
-      'isha': '19:09'
+      'dhuhr': '13:04',
+      'asr': '15:23',
+      'maghrib': '17:44',
+      'isha': '19:10'
     }
   },
   '2024-12-13': {
@@ -1101,11 +1101,11 @@ Map istIstanbul = {
       'hijri': '12 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:41',
-      'sunrise': '08:13',
-      'dhuhr': '13:03',
-      'asr': '15:22',
-      'maghrib': '17:43',
+      'fajr': '06:42',
+      'sunrise': '08:14',
+      'dhuhr': '13:04',
+      'asr': '15:23',
+      'maghrib': '17:44',
       'isha': '19:10'
     }
   },
@@ -1116,12 +1116,12 @@ Map istIstanbul = {
       'hijri': '13 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:42',
-      'sunrise': '08:14',
-      'dhuhr': '13:04',
+      'fajr': '06:43',
+      'sunrise': '08:15',
+      'dhuhr': '13:05',
       'asr': '15:23',
-      'maghrib': '17:43',
-      'isha': '19:10'
+      'maghrib': '17:44',
+      'isha': '19:11'
     }
   },
   '2024-12-15': {
@@ -1129,36 +1129,6 @@ Map istIstanbul = {
       'date': '2024-12-15',
       'gregorian': '15 Aralık 2024 Pazar',
       'hijri': '14 Cemaziyelahir 1446'
-    },
-    'data': {
-      'fajr': '06:43',
-      'sunrise': '08:15',
-      'dhuhr': '13:04',
-      'asr': '15:23',
-      'maghrib': '17:44',
-      'isha': '19:10'
-    }
-  },
-  '2024-12-16': {
-    'date': {
-      'date': '2024-12-16',
-      'gregorian': '16 Aralık 2024 Pazartesi',
-      'hijri': '15 Cemaziyelahir 1446'
-    },
-    'data': {
-      'fajr': '06:43',
-      'sunrise': '08:16',
-      'dhuhr': '13:05',
-      'asr': '15:23',
-      'maghrib': '17:44',
-      'isha': '19:10'
-    }
-  },
-  '2024-12-17': {
-    'date': {
-      'date': '2024-12-17',
-      'gregorian': '17 Aralık 2024 Salı',
-      'hijri': '16 Cemaziyelahir 1446'
     },
     'data': {
       'fajr': '06:44',
@@ -1169,6 +1139,36 @@ Map istIstanbul = {
       'isha': '19:11'
     }
   },
+  '2024-12-16': {
+    'date': {
+      'date': '2024-12-16',
+      'gregorian': '16 Aralık 2024 Pazartesi',
+      'hijri': '15 Cemaziyelahir 1446'
+    },
+    'data': {
+      'fajr': '06:44',
+      'sunrise': '08:16',
+      'dhuhr': '13:05',
+      'asr': '15:24',
+      'maghrib': '17:45',
+      'isha': '19:11'
+    }
+  },
+  '2024-12-17': {
+    'date': {
+      'date': '2024-12-17',
+      'gregorian': '17 Aralık 2024 Salı',
+      'hijri': '16 Cemaziyelahir 1446'
+    },
+    'data': {
+      'fajr': '06:45',
+      'sunrise': '08:17',
+      'dhuhr': '13:06',
+      'asr': '15:24',
+      'maghrib': '17:45',
+      'isha': '19:12'
+    }
+  },
   '2024-12-18': {
     'date': {
       'date': '2024-12-18',
@@ -1177,11 +1177,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:45',
-      'sunrise': '08:17',
+      'sunrise': '08:18',
       'dhuhr': '13:06',
-      'asr': '15:24',
-      'maghrib': '17:44',
-      'isha': '19:11'
+      'asr': '15:25',
+      'maghrib': '17:45',
+      'isha': '19:12'
     }
   },
   '2024-12-19': {
@@ -1191,11 +1191,11 @@ Map istIstanbul = {
       'hijri': '18 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:45',
+      'fajr': '06:46',
       'sunrise': '08:18',
-      'dhuhr': '13:06',
-      'asr': '15:24',
-      'maghrib': '17:45',
+      'dhuhr': '13:07',
+      'asr': '15:25',
+      'maghrib': '17:46',
       'isha': '19:12'
     }
   },
@@ -1206,12 +1206,12 @@ Map istIstanbul = {
       'hijri': '19 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:46',
-      'sunrise': '08:18',
+      'fajr': '06:47',
+      'sunrise': '08:19',
       'dhuhr': '13:07',
-      'asr': '15:25',
-      'maghrib': '17:45',
-      'isha': '19:12'
+      'asr': '15:26',
+      'maghrib': '17:46',
+      'isha': '19:13'
     }
   },
   '2024-12-21': {
@@ -1221,11 +1221,11 @@ Map istIstanbul = {
       'hijri': '20 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:46',
+      'fajr': '06:47',
       'sunrise': '08:19',
-      'dhuhr': '13:07',
-      'asr': '15:25',
-      'maghrib': '17:46',
+      'dhuhr': '13:08',
+      'asr': '15:26',
+      'maghrib': '17:47',
       'isha': '19:13'
     }
   },
@@ -1236,12 +1236,12 @@ Map istIstanbul = {
       'hijri': '21 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:47',
-      'sunrise': '08:19',
+      'fajr': '06:48',
+      'sunrise': '08:20',
       'dhuhr': '13:08',
-      'asr': '15:26',
-      'maghrib': '17:46',
-      'isha': '19:13'
+      'asr': '15:27',
+      'maghrib': '17:47',
+      'isha': '19:14'
     }
   },
   '2024-12-23': {
@@ -1251,11 +1251,11 @@ Map istIstanbul = {
       'hijri': '22 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:47',
+      'fajr': '06:48',
       'sunrise': '08:20',
-      'dhuhr': '13:08',
-      'asr': '15:26',
-      'maghrib': '17:47',
+      'dhuhr': '13:09',
+      'asr': '15:27',
+      'maghrib': '17:48',
       'isha': '19:14'
     }
   },
@@ -1267,11 +1267,11 @@ Map istIstanbul = {
     },
     'data': {
       'fajr': '06:48',
-      'sunrise': '08:20',
+      'sunrise': '08:21',
       'dhuhr': '13:09',
-      'asr': '15:27',
-      'maghrib': '17:47',
-      'isha': '19:14'
+      'asr': '15:28',
+      'maghrib': '17:48',
+      'isha': '19:15'
     }
   },
   '2024-12-25': {
@@ -1281,12 +1281,12 @@ Map istIstanbul = {
       'hijri': '24 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:48',
-      'sunrise': '08:20',
-      'dhuhr': '13:09',
-      'asr': '15:27',
-      'maghrib': '17:48',
-      'isha': '19:15'
+      'fajr': '06:49',
+      'sunrise': '08:21',
+      'dhuhr': '13:10',
+      'asr': '15:28',
+      'maghrib': '17:49',
+      'isha': '19:16'
     }
   },
   '2024-12-26': {
@@ -1294,21 +1294,6 @@ Map istIstanbul = {
       'date': '2024-12-26',
       'gregorian': '26 Aralık 2024 Perşembe',
       'hijri': '25 Cemaziyelahir 1446'
-    },
-    'data': {
-      'fajr': '06:48',
-      'sunrise': '08:21',
-      'dhuhr': '13:10',
-      'asr': '15:28',
-      'maghrib': '17:49',
-      'isha': '19:15'
-    }
-  },
-  '2024-12-27': {
-    'date': {
-      'date': '2024-12-27',
-      'gregorian': '27 Aralık 2024 Cuma',
-      'hijri': '26 Cemaziyelahir 1446'
     },
     'data': {
       'fajr': '06:49',
@@ -1319,6 +1304,21 @@ Map istIstanbul = {
       'isha': '19:16'
     }
   },
+  '2024-12-27': {
+    'date': {
+      'date': '2024-12-27',
+      'gregorian': '27 Aralık 2024 Cuma',
+      'hijri': '26 Cemaziyelahir 1446'
+    },
+    'data': {
+      'fajr': '06:50',
+      'sunrise': '08:22',
+      'dhuhr': '13:11',
+      'asr': '15:30',
+      'maghrib': '17:50',
+      'isha': '19:17'
+    }
+  },
   '2024-12-28': {
     'date': {
       'date': '2024-12-28',
@@ -1326,11 +1326,11 @@ Map istIstanbul = {
       'hijri': '27 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:49',
-      'sunrise': '08:21',
+      'fajr': '06:50',
+      'sunrise': '08:22',
       'dhuhr': '13:11',
-      'asr': '15:29',
-      'maghrib': '17:50',
+      'asr': '15:30',
+      'maghrib': '17:51',
       'isha': '19:17'
     }
   },
@@ -1341,12 +1341,12 @@ Map istIstanbul = {
       'hijri': '28 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:49',
+      'fajr': '06:50',
       'sunrise': '08:22',
-      'dhuhr': '13:11',
-      'asr': '15:30',
-      'maghrib': '17:51',
-      'isha': '19:17'
+      'dhuhr': '13:12',
+      'asr': '15:31',
+      'maghrib': '17:52',
+      'isha': '19:18'
     }
   },
   '2024-12-30': {
@@ -1359,9 +1359,9 @@ Map istIstanbul = {
       'fajr': '06:50',
       'sunrise': '08:22',
       'dhuhr': '13:12',
-      'asr': '15:31',
-      'maghrib': '17:51',
-      'isha': '19:18'
+      'asr': '15:32',
+      'maghrib': '17:52',
+      'isha': '19:19'
     }
   },
   '2024-12-31': {
@@ -1371,12 +1371,12 @@ Map istIstanbul = {
       'hijri': '30 Cemaziyelahir 1446'
     },
     'data': {
-      'fajr': '06:50',
-      'sunrise': '08:22',
-      'dhuhr': '13:12',
+      'fajr': '06:51',
+      'sunrise': '08:23',
+      'dhuhr': '13:13',
       'asr': '15:32',
-      'maghrib': '17:52',
-      'isha': '19:19'
+      'maghrib': '17:53',
+      'isha': '19:20'
     }
   }
 };
