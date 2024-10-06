@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LanguageService with ChangeNotifier {
   LanguageService({locale}) {
     print('----- Constructor attempted to change locale to ${locale??'null'}');
-    _locale = isSupportedLocale(locale) ? locale : 'tr';
+    _locale = locale;
   }
 
   static final Map<String, Map<String, String>> _dictionary = {
@@ -33,14 +33,8 @@ class LanguageService with ChangeNotifier {
   String get locale => _locale;
   set locale(String locale) {
     print('----- Attempted to change locale to $locale');
-    if (isSupportedLocale(locale)) {
-      _locale = locale;
-      // notifyListeners();
-    }
-  }
-
-  static bool isSupportedLocale(String? locale) {
-    return _dictionary.containsKey(locale);
+    _locale = locale;
+    notifyListeners();
   }
 
   /// Returns the localized string for the given key. If no locale is provided,
