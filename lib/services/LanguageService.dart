@@ -17,6 +17,8 @@ class LanguageService with ChangeNotifier {
       'asr': 'Asr',
       'maghrib': 'Maghrib',
       'isha': 'Isha',
+      'salah_passed': 'The time for {0} has passed.',
+      'remaining_time_for': 'Remaining time for {0}: {1} hour(s) and {2} minutes',
     },
     'tr': {
       'app_title' : 'Ezan Vakti',
@@ -26,6 +28,8 @@ class LanguageService with ChangeNotifier {
       'asr': 'İkindi',
       'maghrib': 'Akşam',
       'isha': 'Yatsı',
+      'salah_passed': '{0} vakti geçti.',
+      'remaining_time_for': '{0} için kalan süre: {1} saat {2} dakika',
     },
   };
 
@@ -39,8 +43,16 @@ class LanguageService with ChangeNotifier {
 
   /// Returns the localized string for the given key. If no locale is provided,
   /// the default locale is used.
-  String get(String key, {String? locale}) {
+  String get(String key, {List? replacement, String? locale}) {
     locale ??= _locale;
+    if(replacement != null) {
+      var str = _dictionary[locale]![key] ?? '';
+      for(var i = 0; i < replacement.length; i++) {
+        str = str.replaceAll('{$i}', replacement[i]);
+      }
+      return str;
+    }
     return _dictionary[locale]![key] ?? '';
   }
+
 }
