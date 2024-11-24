@@ -24,7 +24,7 @@ class LanguageService with ChangeNotifier {
       'app_title' : 'Ezan Vakti',
       'fajr': 'İmsak',
       'sunrise': 'Güneş',
-      'dhuhr': 'Öğlen',
+      'dhuhr': 'Öğle',
       'asr': 'İkindi',
       'maghrib': 'Akşam',
       'isha': 'Yatsı',
