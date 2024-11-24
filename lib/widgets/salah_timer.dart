@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../model/DailySalah.dart';
@@ -15,7 +16,6 @@ class SalahTimer extends StatefulWidget {
 }
 
 class _SalahTimerState extends State<SalahTimer> {
-
   @override
   Widget build(BuildContext context) {
     var _ = Provider.of<TimeProvider>(context);
@@ -43,10 +43,11 @@ class _SalahTimerState extends State<SalahTimer> {
           ),
           Text(
             remainingTime,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+              style: GoogleFonts.roboto(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87, // Fill color
+              ),
           ),
         ],
       ),

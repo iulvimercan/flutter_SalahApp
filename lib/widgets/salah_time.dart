@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../services/LanguageService.dart';
 
 class SalahTime extends StatelessWidget {
-  const SalahTime({required this.salahName, required this.salahTime, super.key});
+  const SalahTime(
+      {required this.salahName, required this.salahTime, super.key});
 
   final String salahName;
   final DateTime salahTime;
@@ -34,7 +36,13 @@ class SalahTime extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(lang.get(salahName)),
-              Text(formattedSalahTime),
+              Text(
+                formattedSalahTime,
+                style: GoogleFonts.roboto(
+                  fontSize: 18,
+                  color: Colors.black87, // Fill color
+                ),
+              ),
             ],
           ),
         ),

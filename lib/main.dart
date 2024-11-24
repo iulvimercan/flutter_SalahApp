@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:salah_app/model/TimeProvider.dart';
 import 'package:salah_app/screens/home.dart';
@@ -53,9 +54,10 @@ class HomeScreen extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 255, 254, 233),
           title: Consumer<LanguageService>(
             builder: (context, lang, child) {
-              return Text(lang.get('app_title'));
+              return Text(lang.get('app_title'), style: GoogleFonts.lato());
             },
           ),
           actions: [
