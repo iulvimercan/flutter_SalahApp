@@ -79,7 +79,9 @@ class DailySalah with ChangeNotifier {
       var tmrDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
       _setAllFieldsWithJson(regionSalahTimes[tmrDate]);
     }
-    notifyListeners();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
   }
 
   void _setAllFieldsWithJson(dayObj) {

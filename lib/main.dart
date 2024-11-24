@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salah_app/model/TimeProvider.dart';
 import 'package:salah_app/screens/home.dart';
 import 'package:salah_app/services/LanguageService.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -48,6 +49,7 @@ class HomeScreen extends StatelessWidget {
         ChangeNotifierProvider(
             create: (c) => LanguageService(locale: deviceLocale)),
         ChangeNotifierProvider(create: (c) => DailySalah.current()),
+        ChangeNotifierProvider(create: (c) => TimeProvider()),
       ],
       child: Scaffold(
         appBar: AppBar(

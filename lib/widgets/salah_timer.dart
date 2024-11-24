@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../model/DailySalah.dart';
+import '../model/TimeProvider.dart';
 import '../services/LanguageService.dart';
 
 class SalahTimer extends StatefulWidget {
@@ -14,24 +15,10 @@ class SalahTimer extends StatefulWidget {
 }
 
 class _SalahTimerState extends State<SalahTimer> {
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+    var _ = Provider.of<TimeProvider>(context);
     var lang = Provider.of<LanguageService>(context);
     var remainingSalah = Provider.of<DailySalah>(context).remainingTime;
     var salahName = remainingSalah['name']!;
