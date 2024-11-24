@@ -52,10 +52,13 @@ class DailySalah with ChangeNotifier {
   Map<String, String> get remainingTime {
     var nextSalah = this.nextSalah;
     var remaining = nextSalah['time'].difference(DateTime.now());
+    var hour = remaining.inHours;
+    var minute = remaining.inMinutes.remainder(60).toString().padLeft(2, '0');
+    var second = remaining.inSeconds.remainder(60).toString().padLeft(2, '0');
     return {
       'name': nextSalah['name'],
       'remaining':
-          "${remaining.inHours}:${remaining.inMinutes.remainder(60)}:${remaining.inSeconds.remainder(60)}"
+          "$hour:$minute:$second",
     };
   }
 
