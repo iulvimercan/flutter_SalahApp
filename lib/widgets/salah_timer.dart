@@ -20,14 +20,15 @@ class _SalahTimerState extends State<SalahTimer> {
   Widget build(BuildContext context) {
     var _ = Provider.of<TimeProvider>(context);
     var lang = Provider.of<LanguageService>(context);
-    var remainingSalah = Provider.of<DailySalah>(context).remainingTime;
+    var dailySalah = Provider.of<DailySalah>(context);
+    var remainingSalah = dailySalah.remainingTime;
     var salahName = remainingSalah['name']!;
     var remainingTime = remainingSalah['remaining']!;
 
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.green[100],
+        color: dailySalah.isKerahatTime ? Colors.red[100] : Colors.green[100],
       ),
       width: 200,
       height: 120,
@@ -43,11 +44,11 @@ class _SalahTimerState extends State<SalahTimer> {
           ),
           Text(
             remainingTime,
-              style: GoogleFonts.roboto(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87, // Fill color
-              ),
+            style: GoogleFonts.roboto(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87, // Fill color
+            ),
           ),
         ],
       ),

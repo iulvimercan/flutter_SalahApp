@@ -49,6 +49,16 @@ class DailySalah with ChangeNotifier {
         {"name": "isha", "time": isha},
       ];
 
+  bool get isKerahatTime {
+    var now = DateTime.now();
+    var sunriseKerahat = sunrise.add(const Duration(minutes: 45));
+    var fajirKerahat = dhuhr.subtract(const Duration(minutes: 45));
+    var asrKerahat = maghrib.subtract(const Duration(minutes: 45));
+    return now.isAfter(sunrise) && now.isBefore(sunriseKerahat)
+        || now.isAfter(fajirKerahat) && now.isBefore(dhuhr)
+        || now.isAfter(asrKerahat) && now.isBefore(maghrib);
+  }
+
   Map<String, String> get remainingTime {
     var nextSalah = this.nextSalah;
     var remaining = nextSalah['time'].difference(DateTime.now());
