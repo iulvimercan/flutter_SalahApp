@@ -39,16 +39,24 @@ class _HomeState extends State<Home> {
               children: [
                 const SalahTimer(),
                 const SizedBox(height: 20),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 15,
-                  runSpacing: 15,
-                  children: dailySalah.salahTimes.map((salahTime) {
-                    return SalahTime(
-                      salahName: salahTime['name'],
-                      salahTime: salahTime['time'],
-                    );
-                  }).toList(),
+                Flexible(
+                  child: GridView(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 1.6,
+                    ),
+                    children: dailySalah.salahTimes.map((salahTime) {
+                      return SalahTime(
+                        salahName: salahTime['name'],
+                        salahTime: salahTime['time'],
+                      );
+                    }).toList(),
+                  ),
                 ),
               ],
             ),

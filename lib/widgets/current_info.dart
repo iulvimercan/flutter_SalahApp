@@ -46,7 +46,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
               Text(
                 _getCurrentTime(),
                 style: GoogleFonts.rowdies(
-                  fontSize: 50,
+                  fontSize: 45,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 6
@@ -56,7 +56,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
               Text(
                 _getCurrentTime(),
                 style: GoogleFonts.rowdies(
-                  fontSize: 50,
+                  fontSize: 45,
                   color: Colors.green[100]!, // Fill color
                 ),
               ),
@@ -68,7 +68,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
               Text(
                 _getCurrentDate(),
                 style: GoogleFonts.lato(
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -76,7 +76,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
               Text(
                 dailySalah.hijri,
                 style: GoogleFonts.lato(
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

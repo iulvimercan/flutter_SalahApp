@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 /// This class is used to get the localized strings.
 class LanguageService with ChangeNotifier {
   LanguageService({locale}) {
-    print('----- Constructor attempted to change locale to ${locale??'null'}');
     _locale = locale ?? 'en';
   }
 
@@ -36,7 +35,6 @@ class LanguageService with ChangeNotifier {
   late String _locale;
   String get locale => _locale;
   set locale(String locale) {
-    print('----- Attempted to change locale to $locale');
     _locale = locale;
     notifyListeners();
   }

@@ -38,14 +38,14 @@ class _SalahTimerState extends State<SalahTimer> {
           Text(
             lang.get(salahName),
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             remainingTime,
             style: GoogleFonts.roboto(
-              fontSize: 26,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.black87, // Fill color
             ),
