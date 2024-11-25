@@ -28,7 +28,7 @@ class SalahTime extends StatelessWidget {
             message,
             style: const TextStyle(fontSize: 16),
           ),
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 5),
         ),
       );
       return;

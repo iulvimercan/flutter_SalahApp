@@ -37,8 +37,19 @@ class DailySalah with ChangeNotifier {
 
   late DateTime date;
   late String gregorian;
-  late String hijri;
   late DateTime fajr, sunrise, dhuhr, asr, maghrib, isha;
+
+  // todo ULVI - can be improved by storing the value in a field
+  String get hijri {
+    var now = DateTime.now();
+    if(now.isAfter(maghrib) && now.isBefore(isha)) {
+      var tomorrowDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
+      return regionSalahTimes[tomorrowDate]['date']['hijri'];
+    } else {
+      var todayDate = now.toString().split(' ')[0];
+      return regionSalahTimes[todayDate]['date']['hijri'];
+    }
+  }
 
   List<Map<String, dynamic>> get salahTimes => [
         {"name": "fajr", "time": fajr},
@@ -103,7 +114,6 @@ class DailySalah with ChangeNotifier {
     var dateStr = dates['date'];
     date = DateTime.parse(dates['date']);
     gregorian = dates['gregorian'];
-    hijri = dates['hijri'];
     fajr = DateTime.parse("$dateStr ${data['fajr']}");
     sunrise = DateTime.parse("$dateStr ${data['sunrise']}");
     dhuhr = DateTime.parse("$dateStr ${data['dhuhr']}");

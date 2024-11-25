@@ -1,10 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:salah_app/model/DailySalah.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../model/TimeProvider.dart';
 
@@ -20,6 +19,11 @@ class _CurrentInfoState extends State<CurrentInfo> {
     var hour = DateTime.now().hour.toString().padLeft(2, '0');
     var minute = DateTime.now().minute.toString().padLeft(2, '0');
     return "$hour:$minute";
+  }
+
+  String _getCurrentDate() {
+    var locale = Localizations.localeOf(context).languageCode;
+    return DateFormat('dd MMMM yyyy EEEE', locale).format(DateTime.now());
   }
 
   @override
@@ -62,7 +66,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                dailySalah.gregorian,
+                _getCurrentDate(),
                 style: GoogleFonts.lato(
                   fontSize: 20,
                   color: Colors.white,
