@@ -37,9 +37,11 @@ class Kankim extends StatelessWidget {
                       ),
                     ),
                     Positioned.fill(
-                      child: Image.asset(
-                        _wallpapers[index],
-                        fit: BoxFit.contain,
+                      child: InteractiveViewer(
+                        child: Image.asset(
+                          _wallpapers[index],
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ],
