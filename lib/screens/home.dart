@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salah_app/model/DailySalah.dart';
+import 'package:salah_app/services/KankimProvider.dart';
 import 'package:salah_app/widgets/salah_time.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
 import 'package:salah_app/widgets/current_info.dart';
+
+import 'kankim.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,8 +19,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     DailySalah dailySalah = Provider.of<DailySalah>(context);
+    KankimProvider kankimProvider = Provider.of<KankimProvider>(context);
 
-    return Container(
+    return kankimProvider.isActive
+      ? Kankim()
+      : Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,

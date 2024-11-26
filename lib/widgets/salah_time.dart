@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../services/KankimProvider.dart';
 import '../services/LanguageService.dart';
 
 class SalahTime extends StatelessWidget {
@@ -50,9 +51,15 @@ class SalahTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lang = Provider.of<LanguageService>(context);
+    var kankimProvider = Provider.of<KankimProvider>(context, listen: false);
 
     return InkWell(
-      onTap: () => _showRemainingTime(context, lang),
+      onTap: () {
+        _showRemainingTime(context, lang);
+        if(salahName == 'sunrise'){
+          kankimProvider.trigger(Trigger.sunriseButton);
+        }
+      },
       child: SizedBox(
         width: 120,
         height: 70,

@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.3.2
   google_fonts: ^6.2.1
   intl: ^0.19.0
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/kankim_wallpapers/
 
 flutter_icons:
   android: true
