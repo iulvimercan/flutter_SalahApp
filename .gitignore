@@ -47,3 +47,5 @@ app.*.map.json
 /android/app/release
 
 devtools_options.yaml
+
+assets/kankim_wallpapers/
