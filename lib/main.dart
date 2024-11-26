@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:salah_app/model/TimeProvider.dart';
 import 'package:salah_app/screens/home.dart';
+import 'package:salah_app/screens/kankim.dart';
 import 'package:salah_app/services/KankimProvider.dart';
 import 'package:salah_app/services/LanguageService.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -34,7 +34,15 @@ void main() {
         }
         return const Locale('en', ''); // Default locale
       },
-      home: const HomeScreen(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (c) => LanguageService()),
+          ChangeNotifierProvider(create: (c) => DailySalah.current()),
+          ChangeNotifierProvider(create: (c) => TimeProvider()),
+          ChangeNotifierProvider(create: (c) => KankimProvider()),
+        ],
+        child: const HomeScreen(),
+      ),
     ),
   );
 }
@@ -44,80 +52,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var deviceLocale = Localizations.localeOf(context).languageCode;
-
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-            create: (c) => LanguageService(locale: deviceLocale)),
-        ChangeNotifierProvider(create: (c) => DailySalah.current()),
-        ChangeNotifierProvider(create: (c) => TimeProvider()),
-        ChangeNotifierProvider(create: (c) => KankimProvider()),
-      ],
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 255, 254, 233),
-          title: Consumer<LanguageService>(
-            builder: (context, lang, child) {
-              return Text(lang.get('app_title'), style: GoogleFonts.lato());
-            },
-          ),
-          actions: [
-            PopupMenuButton(
-              offset: const Offset(-10, 32),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black54),
-                  borderRadius: BorderRadius.circular(35),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.location_on, color: Colors.black54, size: 16,),
-                      Consumer<DailySalah>(
-                        builder: (context, dailySalah, child) {
-                          return Text(
-                            dailySalah.region,
-                            style: const TextStyle(fontSize: 16, color: Colors.black54),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                    child: const Text('İstanbul'),
-                    onTap: () {
-                      Provider.of<DailySalah>(context, listen: false).region =
-                          'İstanbul';
-                    },
-                  ),
-                  PopupMenuItem(
-                    child: const Text('Başakşehir'),
-                    onTap: () {
-                      Provider.of<DailySalah>(context, listen: false).region =
-                          'Başakşehir';
-                    },
-                  ),
-                  PopupMenuItem(
-                    child: const Text('Küçükçekmece'),
-                    onTap: () {
-                      Provider.of<DailySalah>(context, listen: false).region =
-                          'Küçükçekmece';
-                    },
-                  ),
-                ];
-              },
-            ),
-            const SizedBox(width: 12),
-          ],
-        ),
-        body: const Home(),
-      ),
-    );
+    KankimProvider kankimProvider = Provider.of<KankimProvider>(context);
+    LanguageService lang = Provider.of<LanguageService>(context, listen: false);
+    lang.locale = Localizations.localeOf(context).languageCode;
+    var title = lang.get('app_title');
+    return kankimProvider.isActive ? Kankim() : Home(title: title);
   }
 }

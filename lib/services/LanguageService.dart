@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 
 /// This class is used to get the localized strings.
 class LanguageService with ChangeNotifier {
-  LanguageService({locale}) {
-    _locale = locale ?? 'en';
-  }
-
   static final Map<String, Map<String, String>> _dictionary = {
     'en': {
       'app_title' : 'Salah App',
@@ -17,7 +13,7 @@ class LanguageService with ChangeNotifier {
       'maghrib': 'Maghrib',
       'isha': 'Isha',
       'salah_passed': 'The time for {0} has passed.',
-      'remaining_time_for': 'Remaining time for {0}: {1} hour(s) and {2} minutes',
+      'remaining_time_for': 'Remaining time for {0}: {1} hour and {2} minutes',
     },
     'tr': {
       'app_title' : 'Ezan Vakti',
@@ -32,11 +28,17 @@ class LanguageService with ChangeNotifier {
     },
   };
 
-  late String _locale;
+  bool isSet = false;
+  String _locale = 'en';
   String get locale => _locale;
   set locale(String locale) {
     _locale = locale;
-    notifyListeners();
+    if(!isSet){
+      isSet = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        notifyListeners();
+      });
+    }
   }
 
   /// Returns the localized string for the given key. If no locale is provided,
