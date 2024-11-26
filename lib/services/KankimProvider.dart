@@ -6,10 +6,11 @@ class KankimProvider with ChangeNotifier {
   bool get isActive => _isActive;
   List<Trigger> _triggers = [];
   final List<Trigger> _targetTriggers = [
+    Trigger.currentInfoButton,
     Trigger.sunriseButton,
     Trigger.sunriseButton,
     Trigger.sunriseButton,
-    Trigger.countdownButton,
+    Trigger.salahTimerButton,
     Trigger.sunriseButton,
     Trigger.sunriseButton,
     Trigger.sunriseButton,
@@ -47,4 +48,4 @@ class KankimProvider with ChangeNotifier {
 
 }
 
-enum Trigger { sunriseButton, countdownButton }
+enum Trigger { sunriseButton, salahTimerButton, currentInfoButton }

@@ -17,8 +17,6 @@ class SalahTimer extends StatefulWidget {
 }
 
 class _SalahTimerState extends State<SalahTimer> {
-  DateTime presStart = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
     var _ = Provider.of<TimeProvider>(context);
@@ -30,22 +28,14 @@ class _SalahTimerState extends State<SalahTimer> {
     var remainingTime = remainingSalah['remaining']!;
 
     return GestureDetector(
-      onLongPressStart: (_) {
-        print('Long press started');
-        presStart = DateTime.now();
-      },
-      onLongPressEnd: (_) {
-        print('Long press ended');
-        print(presStart);
-        print(DateTime.now());
-        print(DateTime.now().difference(presStart).inSeconds);
-        if (DateTime.now().difference(presStart).inSeconds >= 2) {
-          kankimProvider.trigger(Trigger.countdownButton);
-        }
+      onLongPress: () {
+        kankimProvider.trigger(Trigger.salahTimerButton);
       },
       onTap: () {
         if(kankimProvider.isActive) {
           kankimProvider.deactivate();
+        } else {
+          kankimProvider.resetTriggers();
         }
       },
       child: Container(
