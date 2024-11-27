@@ -8,11 +8,12 @@ import 'package:salah_app/widgets/salah_timer.dart';
 class Kankim extends StatelessWidget {
   Kankim({super.key}) {
     _wallpapers = List<String>.generate(
-        48, (ind) => "assets/kankim_wallpapers/$ind.jpg",
+        _wallpaperCount, (ind) => "assets/kankim_wallpapers/$ind.jpg",
         growable: false);
     _wallpapers.shuffle(Random());
   }
 
+  final int _wallpaperCount = 51;
   late List<String> _wallpapers;
 
   @override
