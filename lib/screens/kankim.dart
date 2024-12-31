@@ -13,7 +13,7 @@ class Kankim extends StatelessWidget {
     _wallpapers.shuffle(Random());
   }
 
-  final int _wallpaperCount = 51;
+  final int _wallpaperCount = 114;
   late List<String> _wallpapers;
 
   @override
