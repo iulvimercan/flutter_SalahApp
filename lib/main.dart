@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         builder: (context, dailySalah, child) {
                           return Text(
                             dailySalah.region,
-                            style: TextStyle(fontSize: 16, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
                           );
                         },
                       ),
@@ -88,24 +88,31 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (context) {
                 return [
                   PopupMenuItem(
-                    child: Text('İstanbul'),
+                    child: const Text('İstanbul'),
                     onTap: () {
                       Provider.of<DailySalah>(context, listen: false).region =
                           'İstanbul';
                     },
                   ),
                   PopupMenuItem(
-                    child: Text('Başakşehir'),
+                    child: const Text('Başakşehir'),
                     onTap: () {
                       Provider.of<DailySalah>(context, listen: false).region =
                           'Başakşehir';
                     },
                   ),
                   PopupMenuItem(
-                    child: Text('Küçükçekmece'),
+                    child: const Text('Küçükçekmece'),
                     onTap: () {
                       Provider.of<DailySalah>(context, listen: false).region =
                           'Küçükçekmece';
+                    },
+                  ),
+                  PopupMenuItem(
+                    child: const Text('Tuzla'),
+                    onTap: () {
+                      Provider.of<DailySalah>(context, listen: false).region =
+                          'Tuzla';
                     },
                   ),
                 ];

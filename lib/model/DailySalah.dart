@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:salah_app/data/salah_times/istanbul_istanbul.dart';
 import 'package:salah_app/data/salah_times/istanbul_basaksehir.dart';
 import 'package:salah_app/data/salah_times/istanbul_kucukcekmece.dart';
+import '../data/salah_times/istanbul_tuzla.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DailySalah with ChangeNotifier {
@@ -30,6 +31,8 @@ class DailySalah with ChangeNotifier {
         return istBasaksehir;
       case 'Küçükçekmece':
         return istKucukcekmece;
+      case 'Tuzla':
+        return istTuzla;
       default:
         return istIstanbul;
     }
