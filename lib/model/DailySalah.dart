@@ -40,17 +40,24 @@ class DailySalah with ChangeNotifier {
 
   late DateTime date;
   late String gregorian;
+  /// This is the hijri date written in the dataset. It is correct till the magrib time. For correct hijri date for all the time, use [_hijriActual].
+  late String _hijriInDataset;
+  /// This is the actual hijri date that is shown in the app. It is updated when magrib calls, so it is always correct.
+  late String _hijriActual;
   late DateTime fajr, sunrise, dhuhr, asr, maghrib, isha;
 
-  // todo ULVI - can be improved by storing the value in a field
   String get hijri {
-    var now = DateTime.now();
-    if(now.isAfter(maghrib) && now.isBefore(isha)) {
-      var tomorrowDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
-      return regionSalahTimes[tomorrowDate]['date']['hijri'];
+    if(_hijriInDataset != _hijriActual) {
+      return _hijriActual;
+
     } else {
-      var todayDate = now.toString().split(' ')[0];
-      return regionSalahTimes[todayDate]['date']['hijri'];
+      var now = DateTime.now();
+      if(now.isAfter(maghrib)) {
+
+        var tomorrowDate = now.add(const Duration(days: 1)).toString().split(' ')[0];
+        _hijriActual = regionSalahTimes[tomorrowDate]['date']['hijri'];
+      }
+      return _hijriActual;
     }
   }
 
@@ -117,6 +124,8 @@ class DailySalah with ChangeNotifier {
     var dateStr = dates['date'];
     date = DateTime.parse(dates['date']);
     gregorian = dates['gregorian'];
+    _hijriInDataset = dates['hijri'];
+    _hijriActual = dates['hijri'];
     fajr = DateTime.parse("$dateStr ${data['fajr']}");
     sunrise = DateTime.parse("$dateStr ${data['sunrise']}");
     dhuhr = DateTime.parse("$dateStr ${data['dhuhr']}");
