@@ -67,7 +67,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
             children: [
               Text(
                 _getCurrentDate(),
-                style: GoogleFonts.lato(
+                style: GoogleFonts.roboto(
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
               ),
               Text(
                 dailySalah.hijri,
-                style: GoogleFonts.lato(
+                style: GoogleFonts.roboto(
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
