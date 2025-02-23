@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:salah_app/model/DailySalah.dart';
-import 'package:salah_app/widgets/salah_time.dart';
-import 'package:salah_app/widgets/salah_timer.dart';
 import 'package:salah_app/widgets/current_info.dart';
+
+import '../widgets/display_daily.dart';
+import '../widgets/display_table.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,10 +12,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var _displayType = 'daily';
+
   @override
   Widget build(BuildContext context) {
-    DailySalah dailySalah = Provider.of<DailySalah>(context);
-
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -34,33 +33,24 @@ class _HomeState extends State<Home> {
         children: [
           const Positioned(left: 0, right: 0, child: CurrentInfo()),
           Positioned.fill(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SalahTimer(),
-                const SizedBox(height: 20),
-                Flexible(
-                  child: GridView(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
-                      childAspectRatio: 1.6,
-                    ),
-                    children: dailySalah.salahTimes.map((salahTime) {
-                      return SalahTime(
-                        salahName: salahTime['name'],
-                        salahTime: salahTime['time'],
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ],
-            ),
+            child: _displayType == 'daily'
+                ? const DisplayDaily()
+                : const DisplayTable(),
           ),
+          Positioned(
+            bottom: 24,
+            right: 16,
+            child: FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  _displayType = _displayType == 'daily' ? 'table' : 'daily';
+                });
+              },
+              child: _displayType == 'daily'
+                  ? const Icon(Icons.calendar_month)
+                  : const Icon(Icons.looks_one_outlined),
+            ),
+          )
         ],
       ),
     );

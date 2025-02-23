@@ -18,6 +18,8 @@ class LanguageService with ChangeNotifier {
       'isha': 'Isha',
       'salah_passed': 'The time for {0} has passed.',
       'remaining_time_for': 'Remaining time for {0}: {1} hour(s) and {2} minutes',
+      'georgian': 'Georgian',
+      'hijri': 'Hijri',
     },
     'tr': {
       'app_title' : 'Ezan Vakti',
@@ -29,6 +31,8 @@ class LanguageService with ChangeNotifier {
       'isha': 'Yatsı',
       'salah_passed': '{0} vakti geçti.',
       'remaining_time_for': '{0} için kalan süre: {1} saat {2} dakika',
+      'georgian': 'Miladi',
+      'hijri': 'Hicri',
     },
   };
 
