@@ -93,6 +93,20 @@ class DailySalah with ChangeNotifier {
     };
   }
 
+  Map<String, String> get remainingTimeForMaghrib {
+    var isDisplayed = nextSalah['name'] != 'maghrib' && nextSalah['name'] != 'isha' && nextSalah['name'] != 'fajr';
+    var remaining = maghrib.difference(DateTime.now());
+    var hour = remaining.inHours;
+    var minute = remaining.inMinutes.remainder(60).toString().padLeft(2, '0');
+    var second = remaining.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return {
+      'isDisplayed': isDisplayed.toString(),
+      'name': 'maghrib',
+      'remaining':
+          "$hour:$minute:$second",
+    };
+  }
+
   Map<String, dynamic> get nextSalah {
     if (!_isDateUpToDate()) {
       updateObjectToDate();

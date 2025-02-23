@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salah_app/widgets/salah_time.dart';
-import 'package:salah_app/widgets/salah_timer.dart';
+import 'package:salah_app/widgets/salah_timer_ramadan.dart';
 
 import '../model/DailySalah.dart';
 
@@ -23,7 +23,7 @@ class _DisplayDailyState extends State<DisplayDaily> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SalahTimer(),
+        const SalahTimerRamadan(),
         const SizedBox(height: 20),
         Flexible(
           child: GridView(

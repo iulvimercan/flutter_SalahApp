@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:salah_app/widgets/salah_timer.dart';
+import 'package:salah_app/widgets/salah_timer_ramadan.dart';
 
 import '../model/DailySalah.dart';
 
@@ -80,7 +80,7 @@ class _DisplayTableState extends State<DisplayTable> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: 142),
-        const SalahTimer(),
+        const SalahTimerRamadan(),
         const SizedBox(height: 42),
         Expanded(
           child: Scrollbar(
