@@ -101,7 +101,7 @@ class DailySalah with ChangeNotifier {
     var second = remaining.inSeconds.remainder(60).toString().padLeft(2, '0');
     return {
       'isDisplayed': isDisplayed.toString(),
-      'name': 'maghrib',
+      'name': 'iftar',
       'remaining':
           "$hour:$minute:$second",
     };
@@ -163,8 +163,8 @@ class DailySalah with ChangeNotifier {
     preferences.setString('region', region);
   }
 
+  bool isRamadan() {
+    return hijri.split(' ')[1].toLowerCase() == 'ramazan';
+  }
 
-  // static String extractTime(DateTime time) {
-  //   return "${time.hour}:${time.minute}";
-  // }
 }

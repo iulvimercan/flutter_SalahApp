@@ -20,6 +20,7 @@ class LanguageService with ChangeNotifier {
       'remaining_time_for': 'Remaining time for {0}: {1} hour(s) and {2} minutes',
       'georgian': 'Georgian',
       'hijri': 'Hijri',
+      'iftar': "Iftar",
     },
     'tr': {
       'app_title' : 'Ezan Vakti',
@@ -33,6 +34,7 @@ class LanguageService with ChangeNotifier {
       'remaining_time_for': '{0} için kalan süre: {1} saat {2} dakika',
       'georgian': 'Miladi',
       'hijri': 'Hicri',
+      'iftar': "İftar",
     },
   };
 
