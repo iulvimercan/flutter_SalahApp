@@ -18,50 +18,80 @@ class _HomeState extends ConsumerState<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromARGB(255, 255, 254, 233),
-            Color.fromARGB(255, 253, 252, 227),
-            // Color.fromARGB(255, 235, 225, 252),
-            Color.fromARGB(255, 237, 213, 255),
-          ],
+    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: isLandscape ? Alignment.topCenter : Alignment.topLeft,
+            end: isLandscape ? Alignment.bottomCenter : Alignment.bottomRight,
+            colors: const [
+              Color.fromARGB(255, 255, 254, 233),
+              Color.fromARGB(255, 253, 252, 227),
+              Color.fromARGB(255, 237, 213, 255),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: isLandscape
+              ? _buildLandscapeLayout()
+              : _buildPortraitLayout(),
         ),
       ),
-      child: Stack(
-        children: [
-          const Positioned(left: 0, right: 0, child: CurrentInfo()),
-          Positioned.fill(
-            child: _displayType == 'daily'
-                ? const DisplayDaily()
-                : const DisplayTable(),
-          ),
-          Positioned(
-            bottom: 24,
-            right: 16,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const _IftarToggleButton(),
-                const SizedBox(width: 12),
-                FloatingActionButton(
-                  onPressed: () {
-                    setState(() {
-                      _displayType = _displayType == 'daily' ? 'table' : 'daily';
-                    });
-                  },
-                  child: _displayType == 'daily'
-                      ? const Icon(Icons.calendar_month)
-                      : const Icon(Icons.looks_one_outlined),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+      floatingActionButton: _buildFloatingButtons(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
+  }
+
+  Widget _buildPortraitLayout() {
+    return Stack(
+      children: [
+        const Positioned(left: 0, right: 0, child: CurrentInfo()),
+        Positioned.fill(
+          child: _displayType == 'daily'
+              ? const DisplayDaily()
+              : const DisplayTable(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout() {
+    return Row(
+      children: [
+        // Left side - Current Info
+        const SizedBox(
+          width: 200,
+          child: CurrentInfo(isLandscape: true),
+        ),
+        // Right side - Main content
+        Expanded(
+          child: _displayType == 'daily'
+              ? const DisplayDaily(isLandscape: true)
+              : const DisplayTable(isLandscape: true),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFloatingButtons() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const _IftarToggleButton(),
+        const SizedBox(width: 12),
+        FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _displayType = _displayType == 'daily' ? 'table' : 'daily';
+            });
+          },
+          child: _displayType == 'daily'
+              ? const Icon(Icons.calendar_month)
+              : const Icon(Icons.looks_one_outlined),
+        ),
+      ],
     );
   }
 }

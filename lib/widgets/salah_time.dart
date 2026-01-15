@@ -7,10 +7,12 @@ import '../providers/providers.dart';
 class SalahTime extends ConsumerWidget {
   final String salahName;
   final DateTime salahTime;
+  final bool isCompact;
 
   const SalahTime({
     required this.salahName,
     required this.salahTime,
+    this.isCompact = false,
     super.key,
   });
 
@@ -75,6 +77,7 @@ class SalahTime extends ConsumerWidget {
       child: _SalahTimeCard(
         salahName: langNotifier.get(salahName),
         formattedTime: _formattedTime,
+        isCompact: isCompact,
       ),
     );
   }
@@ -83,23 +86,28 @@ class SalahTime extends ConsumerWidget {
 class _SalahTimeCard extends StatelessWidget {
   final String salahName;
   final String formattedTime;
+  final bool isCompact;
 
   const _SalahTimeCard({
     required this.salahName,
     required this.formattedTime,
+    this.isCompact = false,
   });
 
   static const double _cardWidth = 120.0;
   static const double _cardHeight = 70.0;
+  static const double _compactCardWidth = 100.0;
+  static const double _compactCardHeight = 55.0;
   static const double _borderRadius = 5.0;
   static const double _elevation = 5.0;
   static const EdgeInsets _padding = EdgeInsets.all(8.0);
+  static const EdgeInsets _compactPadding = EdgeInsets.all(4.0);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: _cardWidth,
-      height: _cardHeight,
+      width: isCompact ? _compactCardWidth : _cardWidth,
+      height: isCompact ? _compactCardHeight : _cardHeight,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(_borderRadius),
@@ -107,15 +115,18 @@ class _SalahTimeCard extends StatelessWidget {
         elevation: _elevation,
         color: Colors.green[100],
         child: Padding(
-          padding: _padding,
+          padding: isCompact ? _compactPadding : _padding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(salahName),
+              Text(
+                salahName,
+                style: TextStyle(fontSize: isCompact ? 12 : 14),
+              ),
               Text(
                 formattedTime,
                 style: GoogleFonts.roboto(
-                  fontSize: 18,
+                  fontSize: isCompact ? 14 : 18,
                   color: Colors.black87,
                 ),
               ),

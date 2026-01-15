@@ -5,7 +5,9 @@ import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
 
 class DisplayTable extends StatelessWidget {
-  const DisplayTable({super.key});
+  final bool isLandscape;
+
+  const DisplayTable({super.key, this.isLandscape = false});
 
   static const double _topSpacing = 142.0;
   static const double _timerSpacing = 42.0;
@@ -13,6 +15,12 @@ class DisplayTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return isLandscape
+      ? _buildLandscapeLayout()
+      : _buildPortraitLayout();
+  }
+
+  Widget _buildPortraitLayout() {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -21,6 +29,26 @@ class DisplayTable extends StatelessWidget {
         SizedBox(height: _timerSpacing),
         Expanded(child: _ScrollableSalahTable()),
         SizedBox(height: _bottomSpacing),
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout() {
+    return const Row(
+      children: [
+        // Timer on the left
+        Padding(
+          padding: EdgeInsets.only(left: 16),
+          child: SalahTimer(),
+        ),
+        SizedBox(width: 16),
+        // Table on the right
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: _ScrollableSalahTable(),
+          ),
+        ),
       ],
     );
   }

@@ -9,6 +9,7 @@ class _TimerStyles {
   static const double singleTimerWidth = 200.0;
   static const double dualTimerWidth = 361.0;
   static const double timerHeight = 120.0;
+  static const double dualTimerHeightLandscape = 160.0;
   static const EdgeInsets dualTimerMargin =
       EdgeInsets.symmetric(horizontal: 25, vertical: 10);
 
@@ -17,8 +18,19 @@ class _TimerStyles {
     fontWeight: FontWeight.bold,
   );
 
+  static const TextStyle nameTextStyleCompact = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle get timeTextStyle => GoogleFonts.roboto(
         fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Colors.black87,
+      );
+
+  static TextStyle get timeTextStyleCompact => GoogleFonts.roboto(
+        fontSize: 18,
         fontWeight: FontWeight.bold,
         color: Colors.black87,
       );
@@ -74,6 +86,7 @@ class SalahTimerRamadan extends ConsumerWidget {
     ref.watch(timeProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
+    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
     final remainingSalah = dailySalah.remainingTime;
     final maghribTimer = dailySalah.remainingTimeForMaghrib;
@@ -86,23 +99,40 @@ class SalahTimerRamadan extends ConsumerWidget {
 
     return Container(
       decoration: _TimerStyles.containerDecoration(dailySalah.isKerahatTime),
-      margin: _TimerStyles.dualTimerMargin,
-      width: _TimerStyles.dualTimerWidth,
-      height: _TimerStyles.timerHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _TimerInfoColumn(
-            salahName: langNotifier.get(remainingSalah['name']!),
-            remainingTime: remainingSalah['remaining']!,
-          ),
-          const _VerticalDivider(),
-          _TimerInfoColumn(
-            salahName: langNotifier.get(maghribTimer['name']!),
-            remainingTime: maghribTimer['remaining']!,
-          ),
-        ],
-      ),
+      margin: isLandscape ? null : _TimerStyles.dualTimerMargin,
+      width: isLandscape ? _TimerStyles.singleTimerWidth : _TimerStyles.dualTimerWidth,
+      height: isLandscape ? _TimerStyles.dualTimerHeightLandscape : _TimerStyles.timerHeight,
+      child: isLandscape
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _TimerInfoColumn(
+                  salahName: langNotifier.get(remainingSalah['name']!),
+                  remainingTime: remainingSalah['remaining']!,
+                  isCompact: true,
+                ),
+                const _HorizontalDivider(),
+                _TimerInfoColumn(
+                  salahName: langNotifier.get(maghribTimer['name']!),
+                  remainingTime: maghribTimer['remaining']!,
+                  isCompact: true,
+                ),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _TimerInfoColumn(
+                  salahName: langNotifier.get(remainingSalah['name']!),
+                  remainingTime: remainingSalah['remaining']!,
+                ),
+                const _VerticalDivider(),
+                _TimerInfoColumn(
+                  salahName: langNotifier.get(maghribTimer['name']!),
+                  remainingTime: maghribTimer['remaining']!,
+                ),
+              ],
+            ),
     );
   }
 }
@@ -110,10 +140,12 @@ class SalahTimerRamadan extends ConsumerWidget {
 class _TimerInfoColumn extends StatelessWidget {
   final String salahName;
   final String remainingTime;
+  final bool isCompact;
 
   const _TimerInfoColumn({
     required this.salahName,
     required this.remainingTime,
+    this.isCompact = false,
   });
 
   @override
@@ -121,8 +153,14 @@ class _TimerInfoColumn extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(salahName, style: _TimerStyles.nameTextStyle),
-        Text(remainingTime, style: _TimerStyles.timeTextStyle),
+        Text(
+          salahName,
+          style: isCompact ? _TimerStyles.nameTextStyleCompact : _TimerStyles.nameTextStyle,
+        ),
+        Text(
+          remainingTime,
+          style: isCompact ? _TimerStyles.timeTextStyleCompact : _TimerStyles.timeTextStyle,
+        ),
       ],
     );
   }
@@ -143,3 +181,20 @@ class _VerticalDivider extends StatelessWidget {
     );
   }
 }
+
+class _HorizontalDivider extends StatelessWidget {
+  const _HorizontalDivider();
+
+  static const double _width = 150.0;
+  static const double _height = 1.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: _width,
+      height: _height,
+      color: Colors.black26,
+    );
+  }
+}
+

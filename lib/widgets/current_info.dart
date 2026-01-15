@@ -6,11 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class CurrentInfo extends ConsumerWidget {
-  const CurrentInfo({super.key});
+  final bool isLandscape;
+
+  const CurrentInfo({super.key, this.isLandscape = false});
 
   static const double _containerHeight = 100.0;
   static const EdgeInsets _containerPadding =
       EdgeInsets.symmetric(horizontal: 25, vertical: 10);
+  static const EdgeInsets _landscapePadding =
+      EdgeInsets.symmetric(horizontal: 10, vertical: 15);
   static const double _borderRadius = 10.0;
 
   String _formatCurrentTime() {
@@ -25,12 +29,23 @@ class CurrentInfo extends ConsumerWidget {
     return DateFormat('dd MMMM yyyy EEEE', locale).format(DateTime.now());
   }
 
+  String _formatCurrentDateShort(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
+    return DateFormat('dd MMM yyyy', locale).format(DateTime.now());
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Watch TimeProvider to trigger rebuilds
     ref.watch(timeProvider);
     final dailySalah = ref.watch(dailySalahProvider);
 
+    return isLandscape
+      ? _buildLandscapeLayout(context, dailySalah)
+      : _buildPortraitLayout(context, dailySalah);
+  }
+
+  Widget _buildPortraitLayout(BuildContext context, dynamic dailySalah) {
     return Container(
       height: _containerHeight,
       padding: _containerPadding,
@@ -48,6 +63,32 @@ class CurrentInfo extends ConsumerWidget {
           _DateInfoColumn(
             gregorianDate: _formatCurrentDate(context),
             hijriDate: dailySalah.hijri,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLandscapeLayout(BuildContext context, dynamic dailySalah) {
+    return Container(
+      padding: _landscapePadding,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(_borderRadius),
+        color: Colors.green[100],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          OutlinedTimeText(
+            time: _formatCurrentTime(),
+            fillColor: Colors.green[100]!,
+            fontSize: 36.0,
+          ),
+          const SizedBox(height: 16),
+          _DateInfoColumn(
+            gregorianDate: _formatCurrentDateShort(context),
+            hijriDate: dailySalah.hijri,
+            isLandscape: true,
           ),
         ],
       ),
@@ -100,14 +141,16 @@ class OutlinedTimeText extends StatelessWidget {
 class _DateInfoColumn extends StatelessWidget {
   final String gregorianDate;
   final String hijriDate;
+  final bool isLandscape;
 
   const _DateInfoColumn({
     required this.gregorianDate,
     required this.hijriDate,
+    this.isLandscape = false,
   });
 
   TextStyle get _dateTextStyle => GoogleFonts.roboto(
-        fontSize: 16,
+        fontSize: isLandscape ? 13 : 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       );
@@ -117,8 +160,16 @@ class _DateInfoColumn extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text(gregorianDate, style: _dateTextStyle),
-        Text(hijriDate, style: _dateTextStyle),
+        Text(
+          gregorianDate,
+          style: _dateTextStyle,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          hijriDate,
+          style: _dateTextStyle,
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
