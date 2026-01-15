@@ -15,76 +15,118 @@ class CurrentInfo extends StatefulWidget {
 }
 
 class _CurrentInfoState extends State<CurrentInfo> {
-  String _getCurrentTime() {
-    var hour = DateTime.now().hour.toString().padLeft(2, '0');
-    var minute = DateTime.now().minute.toString().padLeft(2, '0');
+  static const double _containerHeight = 100.0;
+  static const EdgeInsets _containerPadding =
+      EdgeInsets.symmetric(horizontal: 25, vertical: 10);
+  static const double _borderRadius = 10.0;
+
+  String _formatCurrentTime() {
+    final now = DateTime.now();
+    final hour = now.hour.toString().padLeft(2, '0');
+    final minute = now.minute.toString().padLeft(2, '0');
     return "$hour:$minute";
   }
 
-  String _getCurrentDate() {
-    var locale = Localizations.localeOf(context).languageCode;
+  String _formatCurrentDate() {
+    final locale = Localizations.localeOf(context).languageCode;
     return DateFormat('dd MMMM yyyy EEEE', locale).format(DateTime.now());
   }
 
   @override
   Widget build(BuildContext context) {
-    TimeProvider _ = Provider.of<TimeProvider>(context);
-    DailySalah dailySalah = Provider.of<DailySalah>(context);
+    // Watch TimeProvider to trigger rebuilds
+    context.watch<TimeProvider>();
+    final dailySalah = context.watch<DailySalah>();
 
     return Container(
-      height: 100,
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      height: _containerHeight,
+      padding: _containerPadding,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(_borderRadius),
         color: Colors.green[100],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Stack(
-            children: [
-              Text(
-                _getCurrentTime(),
-                style: GoogleFonts.rowdies(
-                  fontSize: 45,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 6
-                    ..color = Colors.white,
-                ),
-              ),
-              Text(
-                _getCurrentTime(),
-                style: GoogleFonts.rowdies(
-                  fontSize: 45,
-                  color: Colors.green[100]!, // Fill color
-                ),
-              ),
-            ],
+          OutlinedTimeText(
+            time: _formatCurrentTime(),
+            fillColor: Colors.green[100]!,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                _getCurrentDate(),
-                style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                dailySalah.hijri,
-                style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          )
+          _DateInfoColumn(
+            gregorianDate: _formatCurrentDate(),
+            hijriDate: dailySalah.hijri,
+          ),
         ],
       ),
+    );
+  }
+}
+
+class OutlinedTimeText extends StatelessWidget {
+  final String time;
+  final Color fillColor;
+  final double fontSize;
+  final double strokeWidth;
+  final Color strokeColor;
+
+  const OutlinedTimeText({
+    super.key,
+    required this.time,
+    required this.fillColor,
+    this.fontSize = 45.0,
+    this.strokeWidth = 6.0,
+    this.strokeColor = Colors.white,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Text(
+          time,
+          style: GoogleFonts.rowdies(
+            fontSize: fontSize,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = strokeWidth
+              ..color = strokeColor,
+          ),
+        ),
+        Text(
+          time,
+          style: GoogleFonts.rowdies(
+            fontSize: fontSize,
+            color: fillColor,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _DateInfoColumn extends StatelessWidget {
+  final String gregorianDate;
+  final String hijriDate;
+
+  const _DateInfoColumn({
+    required this.gregorianDate,
+    required this.hijriDate,
+  });
+
+  TextStyle get _dateTextStyle => GoogleFonts.roboto(
+        fontSize: 16,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(gregorianDate, style: _dateTextStyle),
+        Text(hijriDate, style: _dateTextStyle),
+      ],
     );
   }
 }
