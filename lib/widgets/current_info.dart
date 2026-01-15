@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:salah_app/providers/providers.dart';
 
-import 'package:salah_app/model/DailySalah.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../model/TimeProvider.dart';
-
-class CurrentInfo extends StatefulWidget {
+class CurrentInfo extends ConsumerWidget {
   const CurrentInfo({super.key});
 
-  @override
-  State<CurrentInfo> createState() => _CurrentInfoState();
-}
-
-class _CurrentInfoState extends State<CurrentInfo> {
   static const double _containerHeight = 100.0;
   static const EdgeInsets _containerPadding =
       EdgeInsets.symmetric(horizontal: 25, vertical: 10);
@@ -27,16 +20,16 @@ class _CurrentInfoState extends State<CurrentInfo> {
     return "$hour:$minute";
   }
 
-  String _formatCurrentDate() {
+  String _formatCurrentDate(BuildContext context) {
     final locale = Localizations.localeOf(context).languageCode;
     return DateFormat('dd MMMM yyyy EEEE', locale).format(DateTime.now());
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Watch TimeProvider to trigger rebuilds
-    context.watch<TimeProvider>();
-    final dailySalah = context.watch<DailySalah>();
+    ref.watch(timeProvider);
+    final dailySalah = ref.watch(dailySalahProvider);
 
     return Container(
       height: _containerHeight,
@@ -53,7 +46,7 @@ class _CurrentInfoState extends State<CurrentInfo> {
             fillColor: Colors.green[100]!,
           ),
           _DateInfoColumn(
-            gregorianDate: _formatCurrentDate(),
+            gregorianDate: _formatCurrentDate(context),
             hijriDate: dailySalah.hijri,
           ),
         ],

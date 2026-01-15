@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import '../model/DailySalah.dart';
-import '../model/TimeProvider.dart';
-import '../services/LanguageService.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:salah_app/providers/providers.dart';
 
 // Shared constants for timer widgets
 class _TimerStyles {
@@ -34,14 +31,14 @@ class _TimerStyles {
   }
 }
 
-class SalahTimer extends StatelessWidget {
+class SalahTimer extends ConsumerWidget {
   const SalahTimer({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    context.watch<TimeProvider>();
-    final lang = context.watch<LanguageService>();
-    final dailySalah = context.watch<DailySalah>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(timeProvider);
+    final langNotifier = ref.read(languageProvider.notifier);
+    final dailySalah = ref.watch(dailySalahProvider);
     final remainingSalah = dailySalah.remainingTime;
 
     return Container(
@@ -49,21 +46,21 @@ class SalahTimer extends StatelessWidget {
       width: _TimerStyles.singleTimerWidth,
       height: _TimerStyles.timerHeight,
       child: _TimerInfoColumn(
-        salahName: lang.get(remainingSalah['name']!),
+        salahName: langNotifier.get(remainingSalah['name']!),
         remainingTime: remainingSalah['remaining']!,
       ),
     );
   }
 }
 
-class SalahTimerRamadan extends StatelessWidget {
+class SalahTimerRamadan extends ConsumerWidget {
   const SalahTimerRamadan({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    context.watch<TimeProvider>();
-    final lang = context.watch<LanguageService>();
-    final dailySalah = context.watch<DailySalah>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(timeProvider);
+    final langNotifier = ref.read(languageProvider.notifier);
+    final dailySalah = ref.watch(dailySalahProvider);
     final remainingSalah = dailySalah.remainingTime;
     final maghribTimer = dailySalah.remainingTimeForMaghrib;
 
@@ -82,12 +79,12 @@ class SalahTimerRamadan extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _TimerInfoColumn(
-            salahName: lang.get(remainingSalah['name']!),
+            salahName: langNotifier.get(remainingSalah['name']!),
             remainingTime: remainingSalah['remaining']!,
           ),
           const _VerticalDivider(),
           _TimerInfoColumn(
-            salahName: lang.get(maghribTimer['name']!),
+            salahName: langNotifier.get(maghribTimer['name']!),
             remainingTime: maghribTimer['remaining']!,
           ),
         ],

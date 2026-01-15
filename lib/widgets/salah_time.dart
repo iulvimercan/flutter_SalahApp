@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../services/LanguageService.dart';
+import '../providers/providers.dart';
 
-class SalahTime extends StatelessWidget {
+class SalahTime extends ConsumerWidget {
   final String salahName;
   final DateTime salahTime;
 
@@ -26,30 +26,30 @@ class SalahTime extends StatelessWidget {
 
   bool get _hasPassed => salahTime.isBefore(DateTime.now());
 
-  void _handleTap(BuildContext context, LanguageService lang) {
+  void _handleTap(BuildContext context, LanguageNotifier langNotifier) {
     ScaffoldMessenger.of(context).clearSnackBars();
 
     if (_hasPassed) {
-      _showPassedSnackBar(context, lang);
+      _showPassedSnackBar(context, langNotifier);
     } else {
-      _showRemainingTimeSnackBar(context, lang);
+      _showRemainingTimeSnackBar(context, langNotifier);
     }
   }
 
-  void _showPassedSnackBar(BuildContext context, LanguageService lang) {
-    final localizedSalahName = lang.get(salahName);
-    final message = lang.get('salah_passed', replacement: [localizedSalahName]);
+  void _showPassedSnackBar(BuildContext context, LanguageNotifier langNotifier) {
+    final localizedSalahName = langNotifier.get(salahName);
+    final message = langNotifier.get('salah_passed', replacement: [localizedSalahName]);
 
     _showSnackBar(context, message, _snackBarDurationPassed);
   }
 
-  void _showRemainingTimeSnackBar(BuildContext context, LanguageService lang) {
+  void _showRemainingTimeSnackBar(BuildContext context, LanguageNotifier langNotifier) {
     final remainingTime = salahTime.difference(DateTime.now());
     final hours = remainingTime.inHours.toString();
     final minutes = remainingTime.inMinutes.remainder(60).toString();
-    final localizedSalahName = lang.get(salahName);
+    final localizedSalahName = langNotifier.get(salahName);
 
-    final message = lang.get(
+    final message = langNotifier.get(
       'remaining_time_for',
       replacement: [localizedSalahName, hours, minutes],
     );
@@ -67,13 +67,13 @@ class SalahTime extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final lang = context.watch<LanguageService>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final langNotifier = ref.read(languageProvider.notifier);
 
     return InkWell(
-      onTap: () => _handleTap(context, lang),
+      onTap: () => _handleTap(context, langNotifier),
       child: _SalahTimeCard(
-        salahName: lang.get(salahName),
+        salahName: langNotifier.get(salahName),
         formattedTime: _formattedTime,
       ),
     );

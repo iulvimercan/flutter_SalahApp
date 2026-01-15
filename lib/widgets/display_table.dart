@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
-
-import '../model/DailySalah.dart';
 
 class DisplayTable extends StatelessWidget {
   const DisplayTable({super.key});
@@ -27,11 +26,11 @@ class DisplayTable extends StatelessWidget {
   }
 }
 
-class _ScrollableSalahTable extends StatelessWidget {
+class _ScrollableSalahTable extends ConsumerWidget {
   const _ScrollableSalahTable();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scrollbar(
       interactive: true,
       child: SingleChildScrollView(
@@ -39,7 +38,7 @@ class _ScrollableSalahTable extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: _SalahDataTable(
-            dataset: context.watch<DailySalah>().regionSalahTimes,
+            dataset: ref.watch(dailySalahProvider).regionSalahTimes,
           ),
         ),
       ),
