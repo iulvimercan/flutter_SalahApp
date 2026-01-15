@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:salah_app/utils/responsive_utils.dart';
 
 import '../providers/providers.dart';
 
@@ -62,7 +62,7 @@ class SalahTime extends ConsumerWidget {
   void _showSnackBar(BuildContext context, String message, Duration duration) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message, style: TextStyle(fontSize: 16.sp)),
+        content: Text(message, style: TextStyle(fontSize: Responsive.sp(14, context))),
         duration: duration,
       ),
     );
@@ -97,27 +97,27 @@ class _SalahTimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: isCompact ? 100.w : 120.w,
-      height: isCompact ? 55.h : 70.h,
+      width: Responsive.w(isCompact ? 90 : 110, context),
+      height: Responsive.h(isCompact ? 50 : 65, context),
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.r),
+          borderRadius: Responsive.circular(5, context),
         ),
         elevation: 5,
         color: Colors.green[100],
         child: Padding(
-          padding: isCompact ? EdgeInsets.all(4.r) : EdgeInsets.all(8.r),
+          padding: Responsive.all(isCompact ? 4 : 8, context),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 salahName,
-                style: TextStyle(fontSize: isCompact ? 12.sp : 14.sp),
+                style: TextStyle(fontSize: Responsive.sp(13, context)),
               ),
               Text(
                 formattedTime,
                 style: GoogleFonts.roboto(
-                  fontSize: isCompact ? 14.sp : 18.sp,
+                  fontSize: Responsive.sp(16, context),
                   color: Colors.black87,
                 ),
               ),

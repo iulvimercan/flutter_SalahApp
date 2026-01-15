@@ -1,48 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
-
-// Shared constants for timer widgets
-class _TimerStyles {
-  static double get borderRadius => 10.r;
-  static double get singleTimerWidth => 200.w;
-  static double get dualTimerWidth => 361.w;
-  static double get timerHeight => 120.h;
-  static double get dualTimerHeightLandscape => 160.h;
-  static EdgeInsets get dualTimerMargin =>
-      EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h);
-
-  static TextStyle get nameTextStyle => TextStyle(
-    fontSize: 18.sp,
-    fontWeight: FontWeight.bold,
-  );
-
-  static TextStyle get nameTextStyleCompact => TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.bold,
-  );
-
-  static TextStyle get timeTextStyle => GoogleFonts.roboto(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black87,
-      );
-
-  static TextStyle get timeTextStyleCompact => GoogleFonts.roboto(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black87,
-      );
-
-  static BoxDecoration containerDecoration(bool isKerahatTime) {
-    return BoxDecoration(
-      borderRadius: BorderRadius.circular(borderRadius),
-      color: isKerahatTime ? Colors.red[100] : Colors.green[100],
-    );
-  }
-}
+import 'package:salah_app/utils/responsive_utils.dart';
 
 class SalahTimer extends ConsumerWidget {
   const SalahTimer({super.key});
@@ -68,9 +28,12 @@ class SimpleSalahTimer extends ConsumerWidget {
     final remainingSalah = dailySalah.remainingTime;
 
     return Container(
-      decoration: _TimerStyles.containerDecoration(dailySalah.isKerahatTime),
-      width: _TimerStyles.singleTimerWidth,
-      height: _TimerStyles.timerHeight,
+      decoration: BoxDecoration(
+        borderRadius: Responsive.circular(10, context),
+        color: dailySalah.isKerahatTime ? Colors.red[100] : Colors.green[100],
+      ),
+      width: Responsive.w(180, context),
+      height: Responsive.h(110, context),
       child: _TimerInfoColumn(
         salahName: langNotifier.get(remainingSalah['name']!),
         remainingTime: remainingSalah['remaining']!,
@@ -99,10 +62,15 @@ class SalahTimerRamadan extends ConsumerWidget {
     }
 
     return Container(
-      decoration: _TimerStyles.containerDecoration(dailySalah.isKerahatTime),
-      margin: isLandscape ? null : _TimerStyles.dualTimerMargin,
-      width: isLandscape ? _TimerStyles.singleTimerWidth : _TimerStyles.dualTimerWidth,
-      height: isLandscape ? _TimerStyles.dualTimerHeightLandscape : _TimerStyles.timerHeight,
+      decoration: BoxDecoration(
+        borderRadius: Responsive.circular(10, context),
+        color: dailySalah.isKerahatTime ? Colors.red[100] : Colors.green[100],
+      ),
+      margin: isLandscape
+          ? null
+          : Responsive.symmetric(context: context, horizontal: 20, vertical: 8),
+      width: isLandscape ? Responsive.w(180, context) : Responsive.w(340, context),
+      height: isLandscape ? Responsive.h(180, context) : Responsive.h(110, context),
       child: isLandscape
           ? Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -112,7 +80,7 @@ class SalahTimerRamadan extends ConsumerWidget {
                   remainingTime: remainingSalah['remaining']!,
                   isCompact: true,
                 ),
-                const _HorizontalDivider(),
+                _HorizontalDivider(),
                 _TimerInfoColumn(
                   salahName: langNotifier.get(maghribTimer['name']!),
                   remainingTime: maghribTimer['remaining']!,
@@ -127,7 +95,7 @@ class SalahTimerRamadan extends ConsumerWidget {
                   salahName: langNotifier.get(remainingSalah['name']!),
                   remainingTime: remainingSalah['remaining']!,
                 ),
-                const _VerticalDivider(),
+                _VerticalDivider(),
                 _TimerInfoColumn(
                   salahName: langNotifier.get(maghribTimer['name']!),
                   remainingTime: maghribTimer['remaining']!,
@@ -156,11 +124,18 @@ class _TimerInfoColumn extends StatelessWidget {
       children: [
         Text(
           salahName,
-          style: isCompact ? _TimerStyles.nameTextStyleCompact : _TimerStyles.nameTextStyle,
+          style: TextStyle(
+            fontSize: Responsive.sp(isCompact ? 14 : 16, context),
+            fontWeight: FontWeight.bold,
+          ),
         ),
         Text(
           remainingTime,
-          style: isCompact ? _TimerStyles.timeTextStyleCompact : _TimerStyles.timeTextStyle,
+          style: GoogleFonts.roboto(
+            fontSize: Responsive.sp(isCompact ? 19 : 22, context),
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
         ),
       ],
     );
@@ -168,26 +143,22 @@ class _TimerInfoColumn extends StatelessWidget {
 }
 
 class _VerticalDivider extends StatelessWidget {
-  const _VerticalDivider();
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1.w,
-      height: 80.h,
+      width: Responsive.w(1, context),
+      height: Responsive.h(70, context),
       color: Colors.black26,
     );
   }
 }
 
 class _HorizontalDivider extends StatelessWidget {
-  const _HorizontalDivider();
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150.w,
-      height: 1.h,
+      width: Responsive.w(130, context),
+      height: Responsive.h(1, context),
       color: Colors.black26,
     );
   }

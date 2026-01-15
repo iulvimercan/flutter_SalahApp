@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/screens/home.dart';
 import 'package:salah_app/services/home_widget_service.dart';
+import 'package:salah_app/utils/responsive_utils.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
@@ -106,7 +107,7 @@ class HomeScreen extends ConsumerWidget {
               ref.read(dailySalahProvider.notifier).setRegion(region);
             },
           ),
-          SizedBox(width: 12.w),
+          Responsive.horizontalSpace(12, context),
         ],
       ),
       body: const Home(),
@@ -133,7 +134,7 @@ class _RegionSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      offset: Offset(-10.w, 32.h),
+      offset: Offset(Responsive.w(-10, context), Responsive.h(32, context)),
       child: _RegionDisplayButton(region: currentRegion),
       itemBuilder: (context) {
         return _availableRegions.map((region) {
@@ -157,16 +158,16 @@ class _RegionDisplayButton extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black54),
-        borderRadius: BorderRadius.circular(35.r),
+        borderRadius: Responsive.circular(35, context),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+        padding: Responsive.symmetric(context: context, horizontal: 8, vertical: 4),
         child: Row(
           children: [
-            Icon(Icons.location_on, color: Colors.black54, size: 16.sp),
+            Icon(Icons.location_on, color: Colors.black54, size: Responsive.sp(16, context)),
             Text(
               region,
-              style: TextStyle(fontSize: 16.sp, color: Colors.black54),
+              style: TextStyle(fontSize: Responsive.sp(16, context), color: Colors.black54),
             ),
           ],
         ),

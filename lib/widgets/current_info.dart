@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
+import 'package:salah_app/utils/responsive_utils.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -41,10 +41,10 @@ class CurrentInfo extends ConsumerWidget {
 
   Widget _buildPortraitLayout(BuildContext context, dynamic dailySalah) {
     return Container(
-      height: 100.h,
-      padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+      height: Responsive.h(95, context),
+      padding: Responsive.symmetric(context: context, horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: Responsive.circular(10, context),
         color: Colors.green[100],
       ),
       child: Row(
@@ -65,9 +65,9 @@ class CurrentInfo extends ConsumerWidget {
 
   Widget _buildLandscapeLayout(BuildContext context, dynamic dailySalah) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+      padding: Responsive.symmetric(context: context, horizontal: 10, vertical: 15),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: Responsive.circular(10, context),
         color: Colors.green[100],
       ),
       child: Column(
@@ -76,9 +76,9 @@ class CurrentInfo extends ConsumerWidget {
           OutlinedTimeText(
             time: _formatCurrentTime(),
             fillColor: Colors.green[100]!,
-            fontSize: 36.sp,
+            fontSize: Responsive.sp(32, context),
           ),
-          SizedBox(height: 16.h),
+          Responsive.verticalSpace(12, context),
           _DateInfoColumn(
             gregorianDate: _formatCurrentDateShort(context),
             hijriDate: dailySalah.hijri,
@@ -108,8 +108,8 @@ class OutlinedTimeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveFontSize = fontSize ?? 45.sp;
-    final effectiveStrokeWidth = strokeWidth ?? 6.w;
+    final effectiveFontSize = fontSize ?? Responsive.sp(40, context);
+    final effectiveStrokeWidth = strokeWidth ?? 5.0;
 
     return Stack(
       children: [
@@ -146,25 +146,25 @@ class _DateInfoColumn extends StatelessWidget {
     this.isLandscape = false,
   });
 
-  TextStyle get _dateTextStyle => GoogleFonts.roboto(
-        fontSize: isLandscape ? 13.sp : 16.sp,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      );
-
   @override
   Widget build(BuildContext context) {
+    final textStyle = GoogleFonts.roboto(
+      fontSize: Responsive.sp(14, context),
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    );
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
           gregorianDate,
-          style: _dateTextStyle,
+          style: textStyle,
           textAlign: TextAlign.center,
         ),
         Text(
           hijriDate,
-          style: _dateTextStyle,
+          style: textStyle,
           textAlign: TextAlign.center,
         ),
       ],

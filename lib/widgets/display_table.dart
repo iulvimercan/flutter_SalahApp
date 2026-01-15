@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
+import 'package:salah_app/utils/responsive_utils.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
 
 class DisplayTable extends StatelessWidget {
@@ -13,36 +13,36 @@ class DisplayTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLandscape
-      ? _buildLandscapeLayout()
-      : _buildPortraitLayout();
+      ? _buildLandscapeLayout(context)
+      : _buildPortraitLayout(context);
   }
 
-  Widget _buildPortraitLayout() {
+  Widget _buildPortraitLayout(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 142.h),
+        Responsive.verticalSpace(130, context),
         const SalahTimer(),
-        SizedBox(height: 42.h),
+        Responsive.verticalSpace(35, context),
         const Expanded(child: _ScrollableSalahTable()),
-        SizedBox(height: 32.h),
+        Responsive.verticalSpace(25, context),
       ],
     );
   }
 
-  Widget _buildLandscapeLayout() {
+  Widget _buildLandscapeLayout(BuildContext context) {
     return Row(
       children: [
         // Timer on the left
         Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: Responsive.only(context: context, left: 16),
           child: const SalahTimer(),
         ),
-        SizedBox(width: 16.w),
+        Responsive.horizontalSpace(16, context),
         // Table on the right
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
+            padding: Responsive.symmetric(context: context, vertical: 8),
             child: const _ScrollableSalahTable(),
           ),
         ),
@@ -140,16 +140,19 @@ class _SalahDataTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderColor = Colors.grey.shade300.withOpacity(0.7);
+    var isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    var containerWidth = isLandscape ? 500.0 : 400.0;
 
     return Container(
+      width: Responsive.w(containerWidth, context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.r),
-          topRight: Radius.circular(12.r),
+          topLeft: Radius.circular(Responsive.r(12, context)),
+          topRight: Radius.circular(Responsive.r(12, context)),
         ),
         border: Border.fromBorderSide(BorderSide(
           color: borderColor,
-          width: 2.w,
+          width: 2,
         )),
       ),
       child: Table(
@@ -166,11 +169,11 @@ class _SalahDataTable extends StatelessWidget {
         border: TableBorder(
           horizontalInside: BorderSide(
             color: borderColor,
-            width: 2.w,
+            width: 2,
           ),
         ),
         children: [
-          _TableHeaderRow(),
+          _TableHeaderRow(context),
           ..._buildDataRows(),
         ],
       ),
@@ -179,13 +182,13 @@ class _SalahDataTable extends StatelessWidget {
 }
 
 class _TableHeaderRow extends TableRow {
-  _TableHeaderRow()
+  _TableHeaderRow(BuildContext context)
       : super(
           decoration: BoxDecoration(
             color: const Color.fromRGBO(251, 219, 132, 0.32),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12.r),
-              topRight: Radius.circular(12.r),
+              topLeft: Radius.circular(Responsive.r(12, context)),
+              topRight: Radius.circular(Responsive.r(12, context)),
             ),
           ),
           children: const [
@@ -209,10 +212,10 @@ class _DataCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 4.w),
+      padding: Responsive.symmetric(context: context, vertical: 10, horizontal: 4),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12.sp, color: Colors.black87),
+        style: TextStyle(fontSize: Responsive.sp(11, context), color: Colors.black87),
         textAlign: TextAlign.center,
       ),
     );
@@ -227,11 +230,11 @@ class _HeaderCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 2.9.w),
+      padding: Responsive.symmetric(context: context, vertical: 12, horizontal: 3),
       child: Text(
         text,
         style: GoogleFonts.roboto(
-          fontSize: 12.sp,
+          fontSize: Responsive.sp(11, context),
           fontWeight: FontWeight.bold,
           color: Colors.black.withOpacity(0.78),
         ),
