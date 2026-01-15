@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/current_info.dart';
 
 import '../widgets/display_daily.dart';
 import '../widgets/display_table.dart';
 
-class Home extends StatefulWidget {
+class Home extends ConsumerStatefulWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  ConsumerState<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends ConsumerState<Home> {
   var _displayType = 'daily';
 
   @override
@@ -40,15 +42,22 @@ class _HomeState extends State<Home> {
           Positioned(
             bottom: 24,
             right: 16,
-            child: FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                  _displayType = _displayType == 'daily' ? 'table' : 'daily';
-                });
-              },
-              child: _displayType == 'daily'
-                  ? const Icon(Icons.calendar_month)
-                  : const Icon(Icons.looks_one_outlined),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const _IftarToggleButton(),
+                const SizedBox(width: 12),
+                FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      _displayType = _displayType == 'daily' ? 'table' : 'daily';
+                    });
+                  },
+                  child: _displayType == 'daily'
+                      ? const Icon(Icons.calendar_month)
+                      : const Icon(Icons.looks_one_outlined),
+                ),
+              ],
             ),
           )
         ],
@@ -56,3 +65,35 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+class _IftarToggleButton extends ConsumerWidget {
+  const _IftarToggleButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showIftar = ref.watch(showIftarProvider);
+
+    return FloatingActionButton(
+      onPressed: ref.read(showIftarProvider.notifier).toggle,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          const Icon(Icons.restaurant),
+          if (showIftar)
+            Transform.rotate(
+              angle: 0.785398, // 45 degrees in radians
+              child: Container(
+                width: 32,
+                height: 3,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+

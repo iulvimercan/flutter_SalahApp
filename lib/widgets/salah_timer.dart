@@ -36,6 +36,19 @@ class SalahTimer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final showIftar = ref.watch(showIftarProvider);
+
+    return showIftar
+      ? const SalahTimerRamadan()
+      : const SimpleSalahTimer();
+  }
+}
+
+class SimpleSalahTimer extends ConsumerWidget {
+  const SimpleSalahTimer({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(timeProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
@@ -61,13 +74,14 @@ class SalahTimerRamadan extends ConsumerWidget {
     ref.watch(timeProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
+
     final remainingSalah = dailySalah.remainingTime;
     final maghribTimer = dailySalah.remainingTimeForMaghrib;
 
     final shouldShowMaghribTimer = maghribTimer['isDisplayed'] != 'false';
 
     if (!shouldShowMaghribTimer) {
-      return const SalahTimer();
+      return const SimpleSalahTimer();
     }
 
     return Container(
