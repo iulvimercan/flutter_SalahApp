@@ -1,90 +1,173 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:salah_app/providers/providers.dart';
+import 'package:salah_app/utils/responsive_utils.dart';
 
-import 'package:salah_app/model/DailySalah.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../model/TimeProvider.dart';
+class CurrentInfo extends ConsumerWidget {
+  final bool isLandscape;
 
-class CurrentInfo extends StatefulWidget {
-  const CurrentInfo({super.key});
+  const CurrentInfo({super.key, this.isLandscape = false});
 
-  @override
-  State<CurrentInfo> createState() => _CurrentInfoState();
-}
-
-class _CurrentInfoState extends State<CurrentInfo> {
-  String _getCurrentTime() {
-    var hour = DateTime.now().hour.toString().padLeft(2, '0');
-    var minute = DateTime.now().minute.toString().padLeft(2, '0');
+  String _formatCurrentTime() {
+    final now = DateTime.now();
+    final hour = now.hour.toString().padLeft(2, '0');
+    final minute = now.minute.toString().padLeft(2, '0');
     return "$hour:$minute";
   }
 
-  String _getCurrentDate() {
-    var locale = Localizations.localeOf(context).languageCode;
+  String _formatCurrentDate(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
     return DateFormat('dd MMMM yyyy EEEE', locale).format(DateTime.now());
   }
 
-  @override
-  Widget build(BuildContext context) {
-    TimeProvider _ = Provider.of<TimeProvider>(context);
-    DailySalah dailySalah = Provider.of<DailySalah>(context);
+  String _formatCurrentDateShort(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
+    return DateFormat('dd MMM yyyy', locale).format(DateTime.now());
+  }
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Watch TimeProvider to trigger rebuilds
+    ref.watch(timeProvider);
+    final dailySalah = ref.watch(dailySalahProvider);
+
+    return isLandscape
+      ? _buildLandscapeLayout(context, dailySalah)
+      : _buildPortraitLayout(context, dailySalah);
+  }
+
+  Widget _buildPortraitLayout(BuildContext context, dynamic dailySalah) {
     return Container(
-      height: 100,
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      height: Responsive.h(95, context),
+      padding: Responsive.symmetric(context: context, horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: Responsive.circular(10, context),
         color: Colors.green[100],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Stack(
-            children: [
-              Text(
-                _getCurrentTime(),
-                style: GoogleFonts.rowdies(
-                  fontSize: 45,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 6
-                    ..color = Colors.white,
-                ),
-              ),
-              Text(
-                _getCurrentTime(),
-                style: GoogleFonts.rowdies(
-                  fontSize: 45,
-                  color: Colors.green[100]!, // Fill color
-                ),
-              ),
-            ],
+          OutlinedTimeText(
+            time: _formatCurrentTime(),
+            fillColor: Colors.green[100]!,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                _getCurrentDate(),
-                style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                dailySalah.hijri,
-                style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          )
+          _DateInfoColumn(
+            gregorianDate: _formatCurrentDate(context),
+            hijriDate: dailySalah.hijri,
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildLandscapeLayout(BuildContext context, dynamic dailySalah) {
+    return Container(
+      padding: Responsive.symmetric(context: context, horizontal: 10, vertical: 15),
+      decoration: BoxDecoration(
+        borderRadius: Responsive.circular(10, context),
+        color: Colors.green[100],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          OutlinedTimeText(
+            time: _formatCurrentTime(),
+            fillColor: Colors.green[100]!,
+            fontSize: Responsive.sp(32, context),
+          ),
+          Responsive.verticalSpace(12, context),
+          _DateInfoColumn(
+            gregorianDate: _formatCurrentDateShort(context),
+            hijriDate: dailySalah.hijri,
+            isLandscape: true,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class OutlinedTimeText extends StatelessWidget {
+  final String time;
+  final Color fillColor;
+  final double? fontSize;
+  final double? strokeWidth;
+  final Color strokeColor;
+
+  const OutlinedTimeText({
+    super.key,
+    required this.time,
+    required this.fillColor,
+    this.fontSize,
+    this.strokeWidth,
+    this.strokeColor = Colors.white,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final effectiveFontSize = fontSize ?? Responsive.sp(40, context);
+    final effectiveStrokeWidth = strokeWidth ?? 5.0;
+
+    return Stack(
+      children: [
+        Text(
+          time,
+          style: GoogleFonts.rowdies(
+            fontSize: effectiveFontSize,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = effectiveStrokeWidth
+              ..color = strokeColor,
+          ),
+        ),
+        Text(
+          time,
+          style: GoogleFonts.rowdies(
+            fontSize: effectiveFontSize,
+            color: fillColor,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _DateInfoColumn extends StatelessWidget {
+  final String gregorianDate;
+  final String hijriDate;
+  final bool isLandscape;
+
+  const _DateInfoColumn({
+    required this.gregorianDate,
+    required this.hijriDate,
+    this.isLandscape = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle = GoogleFonts.roboto(
+      fontSize: Responsive.sp(14, context),
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    );
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          gregorianDate,
+          style: textStyle,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          hijriDate,
+          style: textStyle,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

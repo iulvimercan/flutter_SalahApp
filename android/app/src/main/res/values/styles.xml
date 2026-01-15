@@ -15,4 +15,8 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+
+    <!-- Widget strings -->
+    <string name="widget_description">Shows remaining time until next salah</string>
+    <string name="app_widget_name">Salah Timer</string>
 </resources>
