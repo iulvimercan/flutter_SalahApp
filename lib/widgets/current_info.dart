@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -9,13 +10,6 @@ class CurrentInfo extends ConsumerWidget {
   final bool isLandscape;
 
   const CurrentInfo({super.key, this.isLandscape = false});
-
-  static const double _containerHeight = 100.0;
-  static const EdgeInsets _containerPadding =
-      EdgeInsets.symmetric(horizontal: 25, vertical: 10);
-  static const EdgeInsets _landscapePadding =
-      EdgeInsets.symmetric(horizontal: 10, vertical: 15);
-  static const double _borderRadius = 10.0;
 
   String _formatCurrentTime() {
     final now = DateTime.now();
@@ -47,10 +41,10 @@ class CurrentInfo extends ConsumerWidget {
 
   Widget _buildPortraitLayout(BuildContext context, dynamic dailySalah) {
     return Container(
-      height: _containerHeight,
-      padding: _containerPadding,
+      height: 100.h,
+      padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(_borderRadius),
+        borderRadius: BorderRadius.circular(10.r),
         color: Colors.green[100],
       ),
       child: Row(
@@ -71,9 +65,9 @@ class CurrentInfo extends ConsumerWidget {
 
   Widget _buildLandscapeLayout(BuildContext context, dynamic dailySalah) {
     return Container(
-      padding: _landscapePadding,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(_borderRadius),
+        borderRadius: BorderRadius.circular(10.r),
         color: Colors.green[100],
       ),
       child: Column(
@@ -82,9 +76,9 @@ class CurrentInfo extends ConsumerWidget {
           OutlinedTimeText(
             time: _formatCurrentTime(),
             fillColor: Colors.green[100]!,
-            fontSize: 36.0,
+            fontSize: 36.sp,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           _DateInfoColumn(
             gregorianDate: _formatCurrentDateShort(context),
             hijriDate: dailySalah.hijri,
@@ -99,37 +93,40 @@ class CurrentInfo extends ConsumerWidget {
 class OutlinedTimeText extends StatelessWidget {
   final String time;
   final Color fillColor;
-  final double fontSize;
-  final double strokeWidth;
+  final double? fontSize;
+  final double? strokeWidth;
   final Color strokeColor;
 
   const OutlinedTimeText({
     super.key,
     required this.time,
     required this.fillColor,
-    this.fontSize = 45.0,
-    this.strokeWidth = 6.0,
+    this.fontSize,
+    this.strokeWidth,
     this.strokeColor = Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
+    final effectiveFontSize = fontSize ?? 45.sp;
+    final effectiveStrokeWidth = strokeWidth ?? 6.w;
+
     return Stack(
       children: [
         Text(
           time,
           style: GoogleFonts.rowdies(
-            fontSize: fontSize,
+            fontSize: effectiveFontSize,
             foreground: Paint()
               ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth
+              ..strokeWidth = effectiveStrokeWidth
               ..color = strokeColor,
           ),
         ),
         Text(
           time,
           style: GoogleFonts.rowdies(
-            fontSize: fontSize,
+            fontSize: effectiveFontSize,
             color: fillColor,
           ),
         ),
@@ -150,7 +147,7 @@ class _DateInfoColumn extends StatelessWidget {
   });
 
   TextStyle get _dateTextStyle => GoogleFonts.roboto(
-        fontSize: isLandscape ? 13 : 16,
+        fontSize: isLandscape ? 13.sp : 16.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       );

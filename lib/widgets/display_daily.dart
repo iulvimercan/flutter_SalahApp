@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/salah_time.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
@@ -23,15 +24,15 @@ class DisplayDaily extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SalahTimer(),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
         Flexible(
           child: GridView(
             shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15,
+              mainAxisSpacing: 15.h,
+              crossAxisSpacing: 15.w,
               childAspectRatio: 1.6,
             ),
             children: dailySalah.salahTimes.map<Widget>((salahTime) {
@@ -50,20 +51,20 @@ class DisplayDaily extends ConsumerWidget {
     return Row(
       children: [
         // Timer on the left
-        const Padding(
-          padding: EdgeInsets.only(left: 16),
-          child: SalahTimer(),
+        Padding(
+          padding: EdgeInsets.only(left: 16.w),
+          child: const SalahTimer(),
         ),
-        const SizedBox(width: 16),
+        SizedBox(width: 16.w),
         // Grid on the right
         Expanded(
           child: GridView(
             shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
+              mainAxisSpacing: 10.h,
+              crossAxisSpacing: 10.w,
               childAspectRatio: 2.0,
             ),
             children: dailySalah.salahTimes.map<Widget>((salahTime) {

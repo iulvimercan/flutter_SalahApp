@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/salah_timer.dart';
 
@@ -8,10 +9,6 @@ class DisplayTable extends StatelessWidget {
   final bool isLandscape;
 
   const DisplayTable({super.key, this.isLandscape = false});
-
-  static const double _topSpacing = 142.0;
-  static const double _timerSpacing = 42.0;
-  static const double _bottomSpacing = 32.0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,32 +18,32 @@ class DisplayTable extends StatelessWidget {
   }
 
   Widget _buildPortraitLayout() {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: _topSpacing),
-        SalahTimer(),
-        SizedBox(height: _timerSpacing),
-        Expanded(child: _ScrollableSalahTable()),
-        SizedBox(height: _bottomSpacing),
+        SizedBox(height: 142.h),
+        const SalahTimer(),
+        SizedBox(height: 42.h),
+        const Expanded(child: _ScrollableSalahTable()),
+        SizedBox(height: 32.h),
       ],
     );
   }
 
   Widget _buildLandscapeLayout() {
-    return const Row(
+    return Row(
       children: [
         // Timer on the left
         Padding(
-          padding: EdgeInsets.only(left: 16),
-          child: SalahTimer(),
+          padding: EdgeInsets.only(left: 16.w),
+          child: const SalahTimer(),
         ),
-        SizedBox(width: 16),
+        SizedBox(width: 16.w),
         // Table on the right
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: _ScrollableSalahTable(),
+            padding: EdgeInsets.symmetric(vertical: 8.h),
+            child: const _ScrollableSalahTable(),
           ),
         ),
       ],
@@ -80,8 +77,6 @@ class _SalahDataTable extends StatelessWidget {
   const _SalahDataTable({required this.dataset});
 
   static const int _maxRowCount = 30;
-  static const double _borderWidth = 2.0;
-  static const double _borderRadius = 12.0;
 
   static const Map<String, String> _shortWeekdays = {
     'Pazartesi': 'Pzt',
@@ -148,13 +143,13 @@ class _SalahDataTable extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(_borderRadius),
-          topRight: Radius.circular(_borderRadius),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12.r),
+          topRight: Radius.circular(12.r),
         ),
         border: Border.fromBorderSide(BorderSide(
           color: borderColor,
-          width: _borderWidth,
+          width: 2.w,
         )),
       ),
       child: Table(
@@ -171,11 +166,11 @@ class _SalahDataTable extends StatelessWidget {
         border: TableBorder(
           horizontalInside: BorderSide(
             color: borderColor,
-            width: _borderWidth,
+            width: 2.w,
           ),
         ),
         children: [
-          const _TableHeaderRow(),
+          _TableHeaderRow(),
           ..._buildDataRows(),
         ],
       ),
@@ -184,13 +179,13 @@ class _SalahDataTable extends StatelessWidget {
 }
 
 class _TableHeaderRow extends TableRow {
-  const _TableHeaderRow()
+  _TableHeaderRow()
       : super(
-          decoration: const BoxDecoration(
-            color: Color.fromRGBO(251, 219, 132, 0.32),
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(251, 219, 132, 0.32),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              topRight: Radius.circular(12),
+              topLeft: Radius.circular(12.r),
+              topRight: Radius.circular(12.r),
             ),
           ),
           children: const [
@@ -211,18 +206,13 @@ class _DataCell extends StatelessWidget {
 
   const _DataCell(this.text);
 
-  static const EdgeInsets _padding =
-      EdgeInsets.symmetric(vertical: 10, horizontal: 4);
-  static const TextStyle _textStyle =
-      TextStyle(fontSize: 12, color: Colors.black87);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: _padding,
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 4.w),
       child: Text(
         text,
-        style: _textStyle,
+        style: TextStyle(fontSize: 12.sp, color: Colors.black87),
         textAlign: TextAlign.center,
       ),
     );
@@ -234,17 +224,14 @@ class _HeaderCell extends StatelessWidget {
 
   const _HeaderCell(this.text);
 
-  static const EdgeInsets _padding =
-      EdgeInsets.symmetric(vertical: 12, horizontal: 2.9);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: _padding,
+      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 2.9.w),
       child: Text(
         text,
         style: GoogleFonts.roboto(
-          fontSize: 12,
+          fontSize: 12.sp,
           fontWeight: FontWeight.bold,
           color: Colors.black.withOpacity(0.78),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../providers/providers.dart';
 
@@ -18,7 +19,6 @@ class SalahTime extends ConsumerWidget {
 
   static const Duration _snackBarDurationPassed = Duration(seconds: 5);
   static const Duration _snackBarDurationRemaining = Duration(seconds: 1);
-  static const TextStyle _snackBarTextStyle = TextStyle(fontSize: 16);
 
   String get _formattedTime {
     final hour = salahTime.hour.toString().padLeft(2, '0');
@@ -62,7 +62,7 @@ class SalahTime extends ConsumerWidget {
   void _showSnackBar(BuildContext context, String message, Duration duration) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message, style: _snackBarTextStyle),
+        content: Text(message, style: TextStyle(fontSize: 16.sp)),
         duration: duration,
       ),
     );
@@ -94,39 +94,30 @@ class _SalahTimeCard extends StatelessWidget {
     this.isCompact = false,
   });
 
-  static const double _cardWidth = 120.0;
-  static const double _cardHeight = 70.0;
-  static const double _compactCardWidth = 100.0;
-  static const double _compactCardHeight = 55.0;
-  static const double _borderRadius = 5.0;
-  static const double _elevation = 5.0;
-  static const EdgeInsets _padding = EdgeInsets.all(8.0);
-  static const EdgeInsets _compactPadding = EdgeInsets.all(4.0);
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: isCompact ? _compactCardWidth : _cardWidth,
-      height: isCompact ? _compactCardHeight : _cardHeight,
+      width: isCompact ? 100.w : 120.w,
+      height: isCompact ? 55.h : 70.h,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(_borderRadius),
+          borderRadius: BorderRadius.circular(5.r),
         ),
-        elevation: _elevation,
+        elevation: 5,
         color: Colors.green[100],
         child: Padding(
-          padding: isCompact ? _compactPadding : _padding,
+          padding: isCompact ? EdgeInsets.all(4.r) : EdgeInsets.all(8.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 salahName,
-                style: TextStyle(fontSize: isCompact ? 12 : 14),
+                style: TextStyle(fontSize: isCompact ? 12.sp : 14.sp),
               ),
               Text(
                 formattedTime,
                 style: GoogleFonts.roboto(
-                  fontSize: isCompact ? 14 : 18,
+                  fontSize: isCompact ? 14.sp : 18.sp,
                   color: Colors.black87,
                 ),
               ),

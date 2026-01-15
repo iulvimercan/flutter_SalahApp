@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/screens/home.dart';
 import 'package:salah_app/services/home_widget_service.dart';
@@ -37,28 +38,35 @@ class _SalahAppState extends ConsumerState<SalahApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('tr', ''),
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        if (locale == null) {
-          return const Locale('en', '');
-        }
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode) {
-            return supportedLocale;
-          }
-        }
-        return const Locale('en', '');
+    return ScreenUtilInit(
+      designSize: const Size(412, 917),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', ''),
+            Locale('tr', ''),
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            if (locale == null) {
+              return const Locale('en', '');
+            }
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode) {
+                return supportedLocale;
+              }
+            }
+            return const Locale('en', '');
+          },
+          home: const HomeScreen(),
+        );
       },
-      home: const HomeScreen(),
     );
   }
 }
@@ -98,7 +106,7 @@ class HomeScreen extends ConsumerWidget {
               ref.read(dailySalahProvider.notifier).setRegion(region);
             },
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
         ],
       ),
       body: const Home(),
@@ -125,7 +133,7 @@ class _RegionSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      offset: const Offset(-10, 32),
+      offset: Offset(-10.w, 32.h),
       child: _RegionDisplayButton(region: currentRegion),
       itemBuilder: (context) {
         return _availableRegions.map((region) {
@@ -149,16 +157,16 @@ class _RegionDisplayButton extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black54),
-        borderRadius: BorderRadius.circular(35),
+        borderRadius: BorderRadius.circular(35.r),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
         child: Row(
           children: [
-            const Icon(Icons.location_on, color: Colors.black54, size: 16),
+            Icon(Icons.location_on, color: Colors.black54, size: 16.sp),
             Text(
               region,
-              style: const TextStyle(fontSize: 16, color: Colors.black54),
+              style: TextStyle(fontSize: 16.sp, color: Colors.black54),
             ),
           ],
         ),

@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 
 // Shared constants for timer widgets
 class _TimerStyles {
-  static const double borderRadius = 10.0;
-  static const double singleTimerWidth = 200.0;
-  static const double dualTimerWidth = 361.0;
-  static const double timerHeight = 120.0;
-  static const double dualTimerHeightLandscape = 160.0;
-  static const EdgeInsets dualTimerMargin =
-      EdgeInsets.symmetric(horizontal: 25, vertical: 10);
+  static double get borderRadius => 10.r;
+  static double get singleTimerWidth => 200.w;
+  static double get dualTimerWidth => 361.w;
+  static double get timerHeight => 120.h;
+  static double get dualTimerHeightLandscape => 160.h;
+  static EdgeInsets get dualTimerMargin =>
+      EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h);
 
-  static const TextStyle nameTextStyle = TextStyle(
-    fontSize: 18,
+  static TextStyle get nameTextStyle => TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle nameTextStyleCompact = TextStyle(
-    fontSize: 14,
+  static TextStyle get nameTextStyleCompact => TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeight.bold,
   );
 
   static TextStyle get timeTextStyle => GoogleFonts.roboto(
-        fontSize: 24,
+        fontSize: 24.sp,
         fontWeight: FontWeight.bold,
         color: Colors.black87,
       );
 
   static TextStyle get timeTextStyleCompact => GoogleFonts.roboto(
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.bold,
         color: Colors.black87,
       );
@@ -169,14 +170,11 @@ class _TimerInfoColumn extends StatelessWidget {
 class _VerticalDivider extends StatelessWidget {
   const _VerticalDivider();
 
-  static const double _width = 1.0;
-  static const double _height = 80.0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: _width,
-      height: _height,
+      width: 1.w,
+      height: 80.h,
       color: Colors.black26,
     );
   }
@@ -185,16 +183,12 @@ class _VerticalDivider extends StatelessWidget {
 class _HorizontalDivider extends StatelessWidget {
   const _HorizontalDivider();
 
-  static const double _width = 150.0;
-  static const double _height = 1.0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: _width,
-      height: _height,
+      width: 150.w,
+      height: 1.h,
       color: Colors.black26,
     );
   }
 }
-

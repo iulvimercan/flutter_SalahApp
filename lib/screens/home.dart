@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/widgets/current_info.dart';
 
@@ -61,9 +62,9 @@ class _HomeState extends ConsumerState<Home> {
     return Row(
       children: [
         // Left side - Current Info
-        const SizedBox(
-          width: 200,
-          child: CurrentInfo(isLandscape: true),
+        SizedBox(
+          width: 200.w,
+          child: const CurrentInfo(isLandscape: true),
         ),
         // Right side - Main content
         Expanded(
@@ -80,7 +81,7 @@ class _HomeState extends ConsumerState<Home> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const _IftarToggleButton(),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         FloatingActionButton(
           onPressed: () {
             setState(() {
@@ -113,11 +114,11 @@ class _IftarToggleButton extends ConsumerWidget {
             Transform.rotate(
               angle: 0.785398, // 45 degrees in radians
               child: Container(
-                width: 32,
-                height: 3,
+                width: 32.w,
+                height: 3.h,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
             ),
@@ -126,4 +127,3 @@ class _IftarToggleButton extends ConsumerWidget {
     );
   }
 }
-
