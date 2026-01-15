@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:salah_app/providers/providers.dart';
 import 'package:salah_app/screens/home.dart';
+import 'package:salah_app/services/home_widget_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
@@ -10,6 +11,9 @@ void main() async {
 
   // Initialize SharedPreferences before running the app
   await SharedPreferencesNotifier.init();
+
+  // Initialize home widget service
+  await HomeWidgetService.initialize();
 
   runApp(
     const ProviderScope(
@@ -77,6 +81,11 @@ class HomeScreen extends ConsumerWidget {
 
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
+
+    // Update home widget with current salah times
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      HomeWidgetService.updateWidget(dailySalah);
+    });
 
     return Scaffold(
       appBar: AppBar(
