@@ -70,6 +70,8 @@ class SalahTime extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Watch the state to rebuild when locale changes
+    ref.watch(languageProvider);
     final langNotifier = ref.read(languageProvider.notifier);
 
     return InkWell(
@@ -112,12 +114,12 @@ class _SalahTimeCard extends StatelessWidget {
             children: [
               Text(
                 salahName,
-                style: TextStyle(fontSize: Responsive.sp(13, context)),
+                style: TextStyle(fontSize: Responsive.sp(15, context)),
               ),
               Text(
                 formattedTime,
                 style: GoogleFonts.roboto(
-                  fontSize: Responsive.sp(16, context),
+                  fontSize: Responsive.sp(18, context),
                   color: Colors.black87,
                 ),
               ),

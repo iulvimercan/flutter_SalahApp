@@ -88,6 +88,8 @@ class HomeScreen extends ConsumerWidget {
       }
     });
 
+    // Watch the state to rebuild when locale changes
+    ref.watch(languageProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
 

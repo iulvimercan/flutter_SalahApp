@@ -23,6 +23,8 @@ class SimpleSalahTimer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(timeProvider);
+    // Watch the state to rebuild when locale changes
+    ref.watch(languageProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
     final remainingSalah = dailySalah.remainingTime;
@@ -48,6 +50,8 @@ class SalahTimerRamadan extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(timeProvider);
+    // Watch the state to rebuild when locale changes
+    ref.watch(languageProvider);
     final langNotifier = ref.read(languageProvider.notifier);
     final dailySalah = ref.watch(dailySalahProvider);
     final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
@@ -125,14 +129,14 @@ class _TimerInfoColumn extends StatelessWidget {
         Text(
           salahName,
           style: TextStyle(
-            fontSize: Responsive.sp(isCompact ? 14 : 16, context),
+            fontSize: Responsive.sp(isCompact ? 16 : 19, context),
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           remainingTime,
           style: GoogleFonts.roboto(
-            fontSize: Responsive.sp(isCompact ? 19 : 22, context),
+            fontSize: Responsive.sp(isCompact ? 23 : 25, context),
             fontWeight: FontWeight.bold,
             color: Colors.black87,
           ),
