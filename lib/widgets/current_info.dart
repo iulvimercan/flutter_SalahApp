@@ -53,6 +53,7 @@ class CurrentInfo extends ConsumerWidget {
           OutlinedTimeText(
             time: _formatCurrentTime(),
             fillColor: Colors.green[100]!,
+            fontSize: Responsive.sp(52, context),
           ),
           _DateInfoColumn(
             gregorianDate: _formatCurrentDate(context),
@@ -76,7 +77,7 @@ class CurrentInfo extends ConsumerWidget {
           OutlinedTimeText(
             time: _formatCurrentTime(),
             fillColor: Colors.green[100]!,
-            fontSize: Responsive.sp(32, context),
+            fontSize: Responsive.sp(48, context),
           ),
           Responsive.verticalSpace(12, context),
           _DateInfoColumn(
@@ -149,7 +150,7 @@ class _DateInfoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = GoogleFonts.roboto(
-      fontSize: Responsive.sp(14, context),
+      fontSize: Responsive.sp(17, context),
       color: Colors.white,
       fontWeight: FontWeight.bold,
     );
