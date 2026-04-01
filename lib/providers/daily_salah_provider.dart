@@ -4,6 +4,7 @@ import 'package:salah_app/data/salah_times/istanbul_basaksehir.dart';
 import 'package:salah_app/data/salah_times/istanbul_kucukcekmece.dart';
 import 'package:salah_app/data/salah_times/istanbul_tuzla.dart';
 import 'package:salah_app/providers/shared_preferences_provider.dart';
+import 'package:salah_app/providers/time_provider.dart';
 
 // ============================================================================
 // Daily Salah Provider
@@ -153,10 +154,21 @@ class DailySalahState {
 
 class DailySalahNotifier extends StateNotifier<DailySalahState> {
   final SharedPreferencesNotifier _prefsNotifier;
+  final Ref _ref;
 
-  DailySalahNotifier(this._prefsNotifier)
+  DailySalahNotifier(this._prefsNotifier, this._ref)
       : super(_createInitialState('İstanbul')) {
     _loadRegionSetting();
+    _watchTimeForUpdates();
+  }
+
+  void _watchTimeForUpdates() {
+    // Watch the timeProvider to check if we need to update to current date
+    _ref.listen(timeProvider, (previous, current) {
+      if (current.isAfter(state.isha)) {
+        updateToCurrentDate();
+      }
+    });
   }
 
   static Map _getRegionSalahTimes(String region) {
@@ -277,7 +289,7 @@ class DailySalahNotifier extends StateNotifier<DailySalahState> {
 final dailySalahProvider =
     StateNotifierProvider<DailySalahNotifier, DailySalahState>((ref) {
   final prefsNotifier = ref.watch(sharedPreferencesProvider.notifier);
-  return DailySalahNotifier(prefsNotifier);
+  return DailySalahNotifier(prefsNotifier, ref);
 });
 
 // Helper provider to get the region salah times map
