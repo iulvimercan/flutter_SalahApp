@@ -131,6 +131,7 @@ class _RegionSelector extends StatelessWidget {
     'Başakşehir',
     'Küçükçekmece',
     'Tuzla',
+    'Kaş'
   ];
 
   @override
