@@ -3,6 +3,7 @@ import 'package:salah_app/data/salah_times/istanbul_istanbul.dart';
 import 'package:salah_app/data/salah_times/istanbul_basaksehir.dart';
 import 'package:salah_app/data/salah_times/istanbul_kucukcekmece.dart';
 import 'package:salah_app/data/salah_times/istanbul_tuzla.dart';
+import 'package:salah_app/data/salah_times/antalya_kas.dart';
 import 'package:salah_app/providers/shared_preferences_provider.dart';
 import 'package:salah_app/providers/time_provider.dart';
 
@@ -47,6 +48,8 @@ class DailySalahState {
         return istKucukcekmece;
       case 'Tuzla':
         return istTuzla;
+      case 'Kaş':
+        return antKas;
       default:
         return istIstanbul;
     }
@@ -181,6 +184,8 @@ class DailySalahNotifier extends StateNotifier<DailySalahState> {
         return istKucukcekmece;
       case 'Tuzla':
         return istTuzla;
+      case 'Kaş':
+        return antKas;
       default:
         return istIstanbul;
     }
